@@ -1,0 +1,66 @@
+0,1,2,3
+,,215372,60680836
+Service Inspection Form,,,
+0010,"Check ICPE Electrical V100 1,8MW MK7",,
+0,eSIF,,
+0.01,0. DMS: 0093-0083 V03,,
+1,Safety,,
+1.01,Two persons present.                                                                                 OK,,
+1.02,Trained in and aware of the contents of the Vestas Corporate OH and S,OK,
+,Manual including ‘Working with Hazardous Materials’ and Safety,,
+,Regulations for Operators and Technicians.,,
+1.03,Be sure to know the general recommendations regarding the following,OK,
+,"points: For safety reasons, note the location of the emergency stop",,
+,buttons. Please refer to documentation “Safety Regulations for,,
+,Operators and Technicians” of the corresponding turbine platform.,,
+1.04,Locking of rotor/blades.                                                                              OK,,
+1.05,Hearing protection.                                                                                     OK,,
+1.06,Hydraulic tools.,,
+,,,Not Applicable
+2,Article 16,,
+2.01,Check that wind turbine is clean. Check that nocombustible or,OK,
+,inflammable material is stored inside the wind turbine.,,
+2.02,L'intérieur de l'aérogénérateur est maintenu propre. L'entreposage à,OK,
+,l'intérieur de l'aérogénérateur de matériaux combustibles ou,,
+,inflammables est interdit.,,
+2.03,Remarks: (as a comment),,
+,,,Not Applicable
+3,Article 17,,
+,,215372,60680836
+3.01,Verify Stop Button is working properly.                                                      OK,,
+3.02,"Suivant une périodicité qui ne peut excéder 1 an, l'exploitant réalise des",OK,
+,tests pour vérifier l'état fonctionnel des équipements de mise à l'arrêt en,,
+,application des préconisations du constructeur de l'aérogénérateur.,,
+3.03,Verify Emergency Stop Button is working properly.                                   OK,,
+3.04,"Suivant une périodicité qui ne peut excéder 1 an, l'exploitant réalise des",OK,
+,tests pour vérifier l'état fonctionnel des équipements de mise à l'arrêt,,
+,d'urgence en application des préconisations du constructeur de,,
+,l'aérogénérateur.,,
+3.05,Perform a VOG Test based on relevant platform SWI.,,
+,,,Not Applicable
+3.06,"Suivant une périodicité qui ne peut excéder 1 an, l'exploitant réalise des",OK,
+,tests pour vérifier l'état fonctionnel des équipements de mise à l'arrêt,,
+,depuis un régime de survitesse en application des préconisations du,,
+,constructeur de l'aérogénérateur,,
+3.07,Remarks: (as a comment),,
+,,,Not Applicable
+4,Article 18 III,,
+4.01,Contrôle des systèmes instrumentés de sécurité: Selon une fréquence,OK,
+,"qui ne peut excéder un an, l’exploitant procède au contrôle de ces",,
+,équipements de sécurités afin de s’assurer de leur bon fonctionnement.,,
+4.02,Control of UPS                                                                                           OK,,
+4.03,Contrôle du bon fonctionnement de l’onduleur                                          OK,,
+4.04,Control of correct condition (absence of leakage or damages) and,OK,
+,correct behavior of Pitch System.,,
+4.05,Contrôle du bon fonctionnement du système d’orientation des pales       OK,,
+4.06,Control of good behavior of Smoke Detector systems. Check that log,OK,
+,“smoke detected” is registered in turbine controller (see operation log,,
+,menu),,
+,,,Service Report
+,,"Turbine No./Id:
+215372","Service order
+60680836"
+4.07,"Si installés, contrôle du bon fonctionnement des détecteurs de fumée     OK",,
+4.08,Remarks: (as a comment),,
+,,,Not Applicable
+,Page 4 of 4,,
