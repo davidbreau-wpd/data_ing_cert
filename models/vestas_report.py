@@ -4,16 +4,20 @@ from .service_report import _Service_Report
 class Vestas_Report(_Service_Report):
     def __init__(self, file_path):
         super().__init__(file_path)
+        self.metadata = None
+        self.metadata_df = None
         
-        self.columns = [65, 330, 350]
         self.camelot_params = {
             'flavor': 'stream',
-            'edge_tol': 500,
-            'row_tol': 10,
-            'columns': [",".join(str(col) for col in self.columns)]
-        } 
-    
-    def find_starting_page(self) -> int:
+            'columns': ['65,330'],
+            'table_areas': ['30,730,600,100'],
+            'edge_tol': 700,
+            'row_tol': 13,
+            'split_text': True,   # Pour gérer le texte qui traverse les colonnes
+            'strip_text': '\n',   # Pour nettoyer le texte des retours à la ligne
+        }
+        
+    def _find_starting_page(self) -> int:
         self._open()
         found_page = None
         for page_num in range(len(self.doc)):
@@ -49,6 +53,7 @@ class Vestas_Report(_Service_Report):
             'pad_no': pad_no,
             'turbine_type': turbine_type,
             'start_date': start_date,
+            'end_date': end_date,
             'customer_address': customer_address,
             'date_and_time_of_receipt': date_and_time_of_receipt,
             'reason_for_call_out': reason_for_call_out
@@ -56,17 +61,8 @@ class Vestas_Report(_Service_Report):
         
         return header_informations
     
-    def check_column_lines(self, page_number: int, columns=None):
-        if columns is None:
-            columns = self.columns
-        table = super()._extract_single_page_table(
-            page_number=page_number,
-            **self.camelot_params
-        )
-        super().plot_column_lines(table,columns)
-        
     def _extract_full_table(self, columns=None) -> pd.DataFrame:
-        starting_page = self.find_starting_page() + 1
+        starting_page = self._find_starting_page() + 1
         self._open()
         ending_page = len(self.doc)
         self._close()
@@ -79,5 +75,87 @@ class Vestas_Report(_Service_Report):
             starting_page_number=starting_page,
             ending_page_number=ending_page,
             **params
+        )
+        
+    def visualize_extraction_parameters(self, page_number: int):
+        """
+        Visualise les paramètres d'extraction configurés pour ce type de rapport.
+        
+        Args:
+            page_number (int): Numéro de la page à visualiser
+        """
+        super().visualize_camelot_parameters(page_number, **self.camelot_params)
+        plt.show()
+        
+        
+    def format_table(self, df):
+        """
+        Formats the raw inspection table by:
+        1. Merging continuation lines
+        2. Standardizing column names
+        
+        Args:
+            df (pd.DataFrame): Raw DataFrame extracted from PDF
+            
+        Returns:
+            pd.DataFrame: Formatted DataFrame with standardized columns
+        """
+        # Merge continuation lines
+        merged_df = self.merge_continuation_lines(df)
+        
+        # Standardize column names
+        formatted_df = super().standardize_columns(merged_df)
+        
+        return formatted_df
+        
+    def set_metadata(self) -> pd.DataFrame:
+        """
+        Définit les métadonnées du rapport et les convertit en DataFrame.
+        """
+        self.metadata = self.get_header_informations()
+        self.metadata_df = pd.DataFrame([self.metadata]).T
+        self.metadata_df.columns = ['Metadata']
+        return self.metadata_df
+
+    def _set_filename(self) -> str:
+        """
+        Définit le nom de fichier basé sur les métadonnées.
+        
+        Returns:
+            str: Nom du fichier (sans extension)
+        """
+        if self.metadata is None:
+            self.set_metadata()
+            
+        return f"{self.metadata['turbine_number']}_vestas_{self.metadata['service_order']}_{self.metadata['reason_for_call_out']}"
+
+    def save_metadata(self, folder_path: str):
+        """
+        Sauvegarde les métadonnées dans un fichier CSV.
+        
+        Args:
+            folder_path: Chemin du dossier de destination
+        """
+        if self.metadata_df is None:
+            self.set_metadata()
+            
+        filename = self._set_filename()
+        
+        self.save_table_to_csv(
+            table=self.metadata_df,
+            name=f"metadata_{filename}",
+            folder_path=folder_path
+        )
+
+    def save_inspection_data(self, table: pd.DataFrame, folder_path: str):
+        """
+        Sauvegarde les données d'inspection.
+        """
+        filename = self._set_filename()
+        
+        self.save_table_to_csv(
+            table=table,
+            name=filename,
+            folder_path=folder_path
         )
         

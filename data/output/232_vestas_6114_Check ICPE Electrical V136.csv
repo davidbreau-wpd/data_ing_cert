@@ -1,0 +1,31 @@
+,item_number,inspection_detail,status
+0,0010,Check ICPE Electrical V112-3MW,
+1,0,eSIF,
+2,0.01,0. DMS: 0093-0083 V03,
+3,1,Safety,
+4,1.01,Two persons present.,OK
+5,1.02,Trained in and aware of the contents of the Vestas Corporate OH and SManual including ‘Working with Hazardous Materials’ and Safety Regulations for Operators and Technicians.,OK
+7,1.03,"Be sure to know the general recommendations regarding the followingpoints: For safety reasons, note the location of the emergency stop buttons. Please refer to documentation “Safety Regulations forOperators and Technicians” of the corresponding turbine platform.",OK
+9,1.04,Locking of rotor/blades.,OK
+10,1.05,Hearing protection.,OK
+11,1.06,Hydraulic tools.,OK
+12,2,Article 16,
+13,2.01,Check that wind turbine is clean. Check that nocombustible orinflammable material is stored inside the wind turbine.,OK
+14,2.02,L'intérieur de l'aérogénérateur est maintenu propre. L'entreposage àl'intérieur de l'aérogénérateur de matériaux combustibles ou inflammables est interdit.,OK
+16,2.03,Remarks: (as a comment),Not Applicable
+18,3,Article 17,
+19,3.01,Verify Stop Button is working properly.,OK
+20,3.02,"Suivant une périodicité qui ne peut excéder 1 an, l'exploitant réalise destests pour vérifier l'état fonctionnel des équipements de mise à l'arrêt en application des préconisations du constructeur de l'aérogénérateur.",OK
+22,3.03,Verify Emergency Stop Button is working properly.,OK
+23,3.04,"Suivant une périodicité qui ne peut excéder 1 an, l'exploitant réalise destests pour vérifier l'état fonctionnel des équipements de mise à l'arrêt d'urgence en application des préconisations du constructeur del'aérogénérateur.",OK
+25,3.05,Perform a VOG Test based on relevant platform SWI.,Not Applicable
+27,3.06,"Suivant une périodicité qui ne peut excéder 1 an, l'exploitant réalise destests pour vérifier l'état fonctionnel des équipements de mise à l'arrêt depuis un régime de survitesse en application des préconisations duconstructeur de l'aérogénérateur",OK
+29,3.07,Remarks: (as a comment),Not Applicable
+31,4,Article 18 III,
+32,4.01,"Contrôle des systèmes instrumentés de sécurité: Selon une fréquencequi ne peut excéder un an, l’exploitant procède au contrôle de ces équipements de sécurités afin de s’assurer de leur bon fonctionnement.",OK
+34,4.02,Control of UPS,OK
+35,4.03,Contrôle du bon fonctionnement de l’onduleur,OK
+36,4.04,Control of correct condition (absence of leakage or damages) andcorrect behavior of Pitch System.,OK
+37,4.05,Contrôle du bon fonctionnement du système d’orientation des pales,OK
+38,4.06,Control of good behavior of Smoke Detector systems. Check that log“smoke detected” is registered in turbine controller (see operation log menu),OK
+40,4.08,Remarks: (as a comment),Not Applicable
