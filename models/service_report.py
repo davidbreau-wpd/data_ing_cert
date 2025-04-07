@@ -1,23 +1,19 @@
 import camelot, fitz, ghostscript, matplotlib.pyplot as plt, os, pandas as pd, re, numpy as np
+from .utils import log_errors, dataframe_required
 
 class _Service_Report:
     def __init__(self, file_path):
         self.file_path = file_path
     
-    def _open(self):
-        self.doc = fitz.open(self.file_path)
-        
-    def _close(self):
-        if self.doc is not None:
-            self.doc.close()
-            self.doc = None
-
     def _get_page(self, page_number: int) -> str:
-        self._open()
-        page = self.doc[page_number].get_text()
-        self._close()
-        return page
+        with fitz.open(self.file_path) as doc:
+            page = doc[page_number].get_text()
+            return page
 
+    # La méthode _find_starting_page a été supprimée car elle est spécifique à chaque fabricant
+    # et sera implémentée dans les classes enfants
+
+    @log_errors
     def _extract_single_page_table(self, page_number: int, **kwargs) -> camelot.core.Table:
         tables = camelot.read_pdf(
             self.file_path,
@@ -32,7 +28,6 @@ class _Service_Report:
     def _convert_to_dataframe(self, table) -> pd.DataFrame:
         return table.df
 
-
     def plot_column_lines(self, table: camelot.core.Table, columns: list, title:str=None, kind='contour'):
         plt.figure()
         camelot.plot(table, kind=kind)
@@ -44,7 +39,7 @@ class _Service_Report:
         plt.legend()
         plt.show()
 
-
+    @log_errors
     def _get_multiple_pages_table(self, starting_page_number: int, ending_page_number: int, **kwargs):
         tables = []
         
@@ -62,13 +57,16 @@ class _Service_Report:
         final_table = pd.concat(tables, ignore_index=True)
         return final_table
     
-    def _clean_table(self, df: pd.DataFrame, cleaning_pipeline: list) -> pd.DataFrame:
+    def _apply_formatting_pipeline(self, df: pd.DataFrame, cleaning_pipeline: list) -> pd.DataFrame:
         """
         Applique une séquence de fonctions de nettoyage au DataFrame.
         
         Args:
             df: DataFrame à nettoyer
             cleaning_pipeline: Liste de fonctions de nettoyage à appliquer
+            
+        Returns:
+            pd.DataFrame: DataFrame nettoyé
         """
         cleaned_df = df.copy()
         for clean_func in cleaning_pipeline:
@@ -85,8 +83,10 @@ class _Service_Report:
             folder_path: Chemin du dossier de destination
             header: Si True, écrit l'en-tête des colonnes
         """
+        os.makedirs(folder_path, exist_ok=True)
         file_path = os.path.join(folder_path, f"{name}.csv")
         table.to_csv(file_path, header=header)
+        logging.info(f"Table sauvegardée dans {file_path}")
 
     def visualize_camelot_parameters(self, page_number=0, **camelot_params):
         """
@@ -130,7 +130,7 @@ class _Service_Report:
 
     def standardize_columns(self, df):
         """Standardise les noms de colonnes"""
-        df.columns = ['item_number', 'inspection_detail', 'status']
+        df.columns = ['no', 'check_item', 'result']
         return df
 
     def merge_continuation_lines(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -168,6 +168,70 @@ class _Service_Report:
                 
         # Supprimer les lignes vides après fusion
         cleaned_df = cleaned_df[cleaned_df[1].str.strip() != '']
+        
+        return cleaned_df
+
+    def _stack_columns_in_pairs(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Empile les colonnes deux par deux en renommant les colonnes paires en 0 et impaires en 1.
+        """
+        # Renommer les colonnes : paires -> 0, impaires -> 1
+        df_renamed = df.copy()
+        df_renamed.columns = [i % 2 for i in range(len(df.columns))]
+        
+        # Liste pour stocker les paires de colonnes
+        stacked_pairs = []
+        
+        # Parcourir les colonnes par paires
+        for i in range(0, len(df_renamed.columns), 2):
+            # Sélectionner la paire de colonnes (0 et 1)
+            pair = df_renamed.iloc[:, i:i+2]
+            # Empiler
+            stacked_pairs.append(pair)
+        
+        # Concaténer toutes les paires
+        result = pd.concat(stacked_pairs, ignore_index=True)
+        
+        return result
+
+    def merge_rows_by_capitalization(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Fusionne les lignes basées sur la capitalisation de la première lettre.
+        Si la première lettre d'une ligne n'est pas en majuscule, cette ligne est considérée 
+        comme une continuation de la ligne précédente.
+        
+        Args:
+            df: DataFrame à nettoyer
+            
+        Returns:
+            pd.DataFrame: DataFrame avec les lignes fusionnées
+        """
+        cleaned_df = df.copy()
+        last_valid_idx = None
+        to_drop = []
+        
+        for idx in cleaned_df.index:
+            # Vérifier si la première colonne existe et n'est pas vide
+            if pd.notna(cleaned_df.loc[idx, 0]) and str(cleaned_df.loc[idx, 0]).strip():
+                # Vérifier si la première lettre est en majuscule
+                first_char = str(cleaned_df.loc[idx, 0]).strip()[0]
+                if not first_char.isupper() and last_valid_idx is not None:
+                    # Fusionner avec la ligne précédente
+                    cleaned_df.loc[last_valid_idx, 0] = (str(cleaned_df.loc[last_valid_idx, 0]) + ' ' + 
+                                                      str(cleaned_df.loc[idx, 0])).strip()
+                    
+                    # Conserver la valeur de la colonne 1 si elle existe
+                    if pd.notna(cleaned_df.loc[idx, 1]) and str(cleaned_df.loc[idx, 1]).strip():
+                        if pd.isna(cleaned_df.loc[last_valid_idx, 1]) or not str(cleaned_df.loc[last_valid_idx, 1]).strip():
+                            cleaned_df.loc[last_valid_idx, 1] = cleaned_df.loc[idx, 1]
+                    
+                    # Marquer cette ligne pour suppression
+                    to_drop.append(idx)
+                else:
+                    last_valid_idx = idx
+            
+        # Supprimer les lignes marquées
+        cleaned_df = cleaned_df.drop(to_drop)
         
         return cleaned_df
 
