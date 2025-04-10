@@ -1,85 +1,64 @@
-import camelot, fitz, ghostscript, matplotlib.pyplot as plt, os, pandas as pd, re
+import camelot, fitz, pandas as pd
 from .service_report import _Service_Report
-from .utils import log_errors, dataframe_required
 
 class Vestas_Report(_Service_Report):
     def __init__(self, file_path):
         super().__init__(file_path)
-        self.metadata = None
-        self.metadata_df = None
+        self._set_order_type()
         
         self.camelot_params = {
             'flavor': 'stream',
-            'columns': ['65,330'],
-            'table_areas': ['30,730,600,100'],
+            'columns': ['65,450'],
+            'table_areas': ['20,730,600,40'],
             'edge_tol': 700,
             'row_tol': 13,
-            'split_text': True,   # Pour gérer le texte qui traverse les colonnes
-            'strip_text': '\n',   # Pour nettoyer le texte des retours à la ligne
+            'split_text': False,   
+            'strip_text': '\n',   
         }
-        
-    def _find_starting_page(self) -> int:
+    
+    def _set_order_type(self):
         """
-        Trouve la page de départ pour un rapport Vestas.
-        
-        Returns:
-            int: Numéro de la page contenant "Service Inspection Form"
-            
-        Raises:
-            ValueError: Si aucune page correspondante n'est trouvée
+        Extrait le type de commande depuis la première ligne de la première page.
+        """
+        try:
+            with fitz.open(self.file_path) as doc:
+                self.order_type = doc[0].get_text().split('\n')[0].strip()
+        except Exception as e:
+            print(f"Erreur lors de l'extraction du type de commande: {e}")
+            self.order_type = None
+
+    def extract_inspection_checklist(self) -> pd.DataFrame:
+        """
+        Extrait la table d'inspection brute du rapport Vestas.
         """
         with fitz.open(self.file_path) as doc:
-            for page_num in range(len(doc)):
-                if "Service Inspection Form" in doc[page_num].get_text():
-                    break
-            else:  # This else clause executes if no break occurred in the for loop
-                raise ValueError("No 'Service Inspection Form' page found in document")
-            return page_num
+            total_pages = len(doc)
+    
+        inspection_params = {
+            **self.camelot_params
+        }
+    
+        return self._get_multiple_pages_table(
+            starting_page_number=2,
+            ending_page_number=total_pages,
+            **inspection_params
+        )
 
-    def _set_filename(self) -> str:
+    def _filter_inspection_rows(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Définit le nom de fichier basé sur les métadonnées.
+        Filtre les lignes de la table entre Inspection et Signature.
+        """
+        return df.loc[df[0].eq("Inspection").idxmax() + 1:df[0].str.contains("Signature", na=False).idxmax() - 1]
+
+    def _process_report(self, metadata_output_folder: str, inspection_checklist_output_folder: str):
+        """Process and save report data"""
+        # Extract and format data
+        raw_inspection = self.extract_inspection_checklist()
+        formatted_inspection = self._filter_inspection_rows(raw_inspection)
         
-        Returns:
-            str: Nom du fichier (sans extension)
-        """
-        if self.metadata is None:
-            self.get_metadata()
-            
-        # Clean reason_for_call_out for filename
-        reason = self.metadata['reason_for_call_out'] or "unknown"
-        reason = re.sub(r'[^\w\s-]', '', reason)[:30].strip().replace(' ', '_')
-            
-        return f"{self.metadata['turbine_number']}_vestas_{self.metadata['service_order']}_{reason}"
-
-    def __call__(self, metadata_output_folder: str, inspection_checklist_output_folder: str, input_folder: str):
-        """
-        Process one or multiple reports and save results.
-        
-        Args:
-            metadata_output_folder: Where to save metadata CSVs
-            inspection_checklist_output_folder: Where to save inspection CSVs
-            input_folder: Folder containing PDF(s) to process
-            
-        Raises:
-            FileNotFoundError: If any of the folders doesn't exist
-        """
-        # Validate folders
-        for folder in [input_folder, metadata_output_folder, inspection_checklist_output_folder]:
-            os.makedirs(folder, exist_ok=True)
-                
-        # Process PDFs
-        try:
-            for pdf_file in os.listdir(input_folder):
-                if pdf_file.lower().endswith('.pdf'):
-                    self.file_path = os.path.join(input_folder, pdf_file)
-                    self._process_report(
-                        os.path.join(metadata_output_folder),
-                        os.path.join(inspection_checklist_output_folder)
-                    )
-        except (PermissionError, FileNotFoundError) as e:
-            logging.error(f"Error accessing directory {input_folder}: {str(e)}")
-
-    # Ces méthodes peuvent être supprimées car remplacées par _process_report
-    # def save_metadata(self, metadata_df: pd.DataFrame, folder_path: str):
-    # def save_inspection_data(self, table: pd.DataFrame, folder_path: str):
+        # Save inspection table
+        self.save_table_to_csv(
+            table=formatted_inspection,
+            name=f"inspection_{self.order_type.lower().replace(' ', '_')}",
+            folder_path=inspection_checklist_output_folder
+        )
