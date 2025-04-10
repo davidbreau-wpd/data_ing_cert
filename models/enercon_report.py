@@ -73,7 +73,6 @@ class Enercon_Report(_Service_Report):
         details_table = self._extract_single_page_table(2, **details_on_order_params)
         details_on_order = self._convert_to_dataframe(details_table)
         
-        # Fusionner les lignes de continuation basées sur la capitalisation
         details_on_order = self.merge_rows_by_capitalization(details_on_order)
         
         return details_on_order
@@ -93,10 +92,8 @@ class Enercon_Report(_Service_Report):
         defects_summary_df = self._convert_to_dataframe(defects_summary_table)
         merged_defects_df = self._stack_columns_in_pairs(defects_summary_df)
         return merged_defects_df
-        # merged_defects_df = self._merge_columns(defects_summary_df, [0, 2, 4], [1, 3, 5])
         
-        # return merged_defects_df
-        return defects_summary_df #temp
+        return defects_summary_df 
 
     def get_metadata(self) -> pd.DataFrame:
         """
@@ -106,22 +103,18 @@ class Enercon_Report(_Service_Report):
         Returns:
             pd.DataFrame: DataFrame avec une colonne 'Metadata' et les noms des champs en index
         """
-        # Récupérer les trois tables
         converter_master_data = self._get_converter_master_data()
         details_on_order = self._get_details_on_order()
         defects_summary = self._get_defects_summary()
         
-        # Concaténer les trois DataFrames
         metadata = pd.concat([converter_master_data, details_on_order, defects_summary], ignore_index=True)
         
-        # Nettoyer les données (supprimer les lignes vides)
         metadata = metadata[metadata[0].str.strip() != '']
         
         metadata.rename(columns={1: 'Metadata'}, inplace=True)
         metadata = metadata.set_index(0)
         metadata.index.name = None
         
-        # Stocker les métadonnées dans l'instance
         self.metadata_df = metadata
 
         return metadata
@@ -181,29 +174,23 @@ class Enercon_Report(_Service_Report):
         Returns:
             str: Nom du fichier (sans extension)
         """
-        # Récupérer les métadonnées si elles n'existent pas encore
         if not hasattr(self, 'metadata_df') or self.metadata_df is None:
             self.get_metadata()
             
-        # Extraire les informations pertinentes pour le nom de fichier
         order_type = self.order_type if hasattr(self, 'order_type') and self.order_type else "unknown"
         order_number = self.metadata_df.loc["Order number", "Metadata"] if "Order number" in self.metadata_df.index else "unknown"
         serial_number = self.metadata_df.loc["Serial number", "Metadata"] if "Serial number" in self.metadata_df.index else "unknown"
         
-        # Créer un nom de fichier unique commençant par le numéro de série
         return f"{serial_number}_enercon_{order_type.replace(' ', '_').lower()}_{order_number}"
 
     def _process_report(self, metadata_output_folder: str, inspection_checklist_output_folder: str):
         """Process and save report data"""
-        # Extract and format data
         metadata = self.get_metadata()
         raw_inspection = self.extract_inspection_checklist()
         formatted_inspection = self.format_table(raw_inspection)
         
-        # Generate filename
         filename = self._set_filename()
         
-        # Save both tables
         self.save_table_to_csv(
             table=metadata,
             name=f"metadata_{filename}",
