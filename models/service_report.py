@@ -1,4 +1,4 @@
-import camelot, fitz, ghostscript, matplotlib.pyplot as plt, os, pandas as pd, re, numpy as np
+import camelot, fitz, ghostscript, matplotlib.pyplot as plt, os, logging, pandas as pd, re, numpy as np
 from .utils import log_errors, dataframe_required
 
 class _Service_Report:
