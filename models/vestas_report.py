@@ -2,20 +2,109 @@ import camelot, fitz, pandas as pd
 from .service_report import _Service_Report
 
 class Vestas_Report(_Service_Report):
+    """
+    Specialized class for processing Vestas service reports.
+    Inherits from _Service_Report and adds Vestas-specific functionality.
+    Handles the extraction and processing of inspection checklists
+    from Vestas PDF reports.
+    """
     def __init__(self, file_path):
+        """
+        Initializes the Vestas report processor.
+
+        Args:
+            file_path (str): Path to the Vestas PDF report file.
+
+        Attributes:
+            metadata (dict): Extracted header information from the report
+            metadata_df (pd.DataFrame): Metadata formatted as a DataFrame
+            camelot_params (dict): Configuration parameters for table extraction
+        """
         super().__init__(file_path)
-        self._set_order_type()
+        self.metadata = None
+        self.metadata_df = None
         
+        self.columns = [65, 330, 350]
         self.camelot_params = {
             'flavor': 'stream',
-            'columns': ['65,450'],
-            'table_areas': ['20,730,600,40'],
-            'edge_tol': 700,
-            'row_tol': 13,
-            'split_text': False,   
-            'strip_text': '\n',   
+            'edge_tol': 500,
+            'row_tol': 10,
+            'columns': [",".join(str(col) for col in self.columns)]
         }
-    
+
+    def get_header_informations(self) -> dict:
+        """
+        Extracts header information from the first page of the report.
+
+        Returns:
+            dict: Contains key metadata like turbine number, service order, dates, etc.
+        """
+        # TODO: Implement header information extraction
+        return {
+            'turbine_number': '',
+            'service_order': '',
+            'reason_for_call_out': '',
+            # Add other metadata fields
+        }
+
+    def set_metadata(self) -> pd.DataFrame:
+        """
+        Sets report metadata and converts it to DataFrame format.
+        """
+        self.metadata = self.get_header_informations()
+        self.metadata_df = pd.DataFrame([self.metadata]).T
+        self.metadata_df.columns = ['Metadata']
+        return self.metadata_df
+
+    def _set_filename(self) -> str:
+        """
+        Generates filename based on metadata.
+
+        Returns:
+            str: Filename without extension
+        """
+        if self.metadata is None:
+            self.set_metadata()
+            
+        return f"{self.metadata['turbine_number']}_vestas_{self.metadata['service_order']}_{self.metadata['reason_for_call_out']}"
+
+    def _process_report(self, metadata_output_folder: str, inspection_checklist_output_folder: str):
+        """Process and save report data"""
+        # Extract and format data
+        raw_inspection = self.extract_inspection_checklist()
+        formatted_inspection = self._filter_inspection_rows(raw_inspection)
+        
+        # Save metadata
+        self.save_metadata(metadata_output_folder)
+        
+        # Save inspection data
+        self.save_inspection_data(formatted_inspection, inspection_checklist_output_folder)
+
+    def save_metadata(self, folder_path: str):
+        """
+        Saves metadata to CSV file.
+        """
+        if self.metadata_df is None:
+            self.set_metadata()
+            
+        filename = self._set_filename()
+        self.save_table_to_csv(
+            table=self.metadata_df,
+            name=f"metadata_{filename}",
+            folder_path=folder_path
+        )
+
+    def save_inspection_data(self, table: pd.DataFrame, folder_path: str):
+        """
+        Saves inspection data to CSV file.
+        """
+        filename = self._set_filename()
+        self.save_table_to_csv(
+            table=table,
+            name=filename,
+            folder_path=folder_path
+        )
+
     def _set_order_type(self):
         """
         Extrait le type de commande depuis la première ligne de la première page.
