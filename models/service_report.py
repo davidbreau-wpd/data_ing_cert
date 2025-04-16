@@ -1,6 +1,8 @@
 import camelot, fitz, ghostscript, matplotlib.pyplot as plt, os, logging, pandas as pd, re, numpy as np
 from .utils import log_errors, dataframe_required
 
+logging.getLogger('pdfminer').setLevel(logging.ERROR)
+
 class _Service_Report:
     """
     Base class for processing service company reports, providing generic and reusable functions
@@ -34,24 +36,24 @@ class _Service_Report:
             return page
 
 
-    @log_errors
+    # @log_errors
     def _extract_single_page_table(self, page_number: int, **kwargs) -> camelot.core.Table:
         """
         Description:
             Extracts a table from a specific page of the PDF document using Camelot.
 
         Args:
-            page_number (int): The page number to extract the table from, starting from 0.
+            page_number (int): The page number to extract the table from.
             **kwargs: Additional keyword arguments to pass to Camelot's read_pdf function.
 
         Returns:
-            camelot.core.Table: The first table found on the specified page.
+            camelot.core.Table: The extracted table object.
 
         Raises:
             ValueError: If no table is found on the specified page.
         """
         tables = camelot.read_pdf(
-            self.file_path,
+            str(self.file_path),
             pages=str(page_number),
             **kwargs)
 
@@ -59,7 +61,7 @@ class _Service_Report:
             return tables[0]
         else:
             raise ValueError(f"No table found in page n°{page_number}")
-        
+
     def _convert_to_dataframe(self, table) -> pd.DataFrame:
         """
         Description:
@@ -74,7 +76,7 @@ class _Service_Report:
         return table.df
 
 
-    @log_errors
+    # @log_errors
     def _get_multiple_pages_table(self, starting_page_number: int, ending_page_number: int, **kwargs):
         """
         Description:
@@ -172,7 +174,8 @@ class _Service_Report:
             columns = [float(x) for x in camelot_params['columns'][0].split(',')]
             for x in columns:
                 plt.axvline(x=x, color='r', linestyle='--', label=f'Colonne {x}')
-
+        
+        # Tracer les zones de table si spécifiées
         if 'table_areas' in camelot_params:
             for area in camelot_params['table_areas']:
                 x1, y1, x2, y2 = map(float, area.split(','))

@@ -1,0 +1,26 @@
+,no,check_item,result
+17,No.,Check item,Result
+18,Tower base,,
+19,1,Carrying out a visual inspection of the tower base,1 Done - No defects
+20,2,Checking RCD tower base,1 Done - No defects
+21,Tower,,
+22,3,Visually inspecting the tower,1 Done - No defects
+23,Machine house,,
+24,4,Checking the machine house first aid kit,1 Done - No defects
+25,5,Checking the fire extinguisher in the machine house,1 Done - No defects
+26,6,Checking RCD machine house,1 Done - No defects
+27,7,Checking the yaw bearing,1 Done - No defects
+28,No.,Check item,Result
+29,8,Visual inspection of machine house,1 Done - No defects
+30,Rotor head,,
+31,9,Checking rotor head seals,1 Done - No defects
+32,10,Grease rotor head bearings,1 Done - No defects
+33,11,Checking blade flange bearings,1 Done - No defects
+34,12,Visual inspection of rotor head,1 Done - No defects
+35,Nacelle exterior,,
+36,13,Inspecting rotor blade exterior,2 Done - Defects detected
+37,Finishing steps,,
+38,14,Acoustic check of WEC,1 Done - No defects
+39,Report overview,,
+40,No.,Defect locationDefect type,Report
+41,13,"Erosion - Bladecoat porous, flaking Blade tip - Blade tip20-50mm",92003987
