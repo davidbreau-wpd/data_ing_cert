@@ -31,28 +31,18 @@ class DatabaseManager:
         self.metadata.drop_all(self.engine)
 
     def delete_file(self):
-        """Physically deletes the database file after closing all connections"""
-        # Close all existing connections
-        self.engine.dispose()
+        """Delete the database file and close all connections"""
+        # Close the current connection if it exists
+        if hasattr(self, 'engine'):
+            self.engine.dispose()
         
-        # Force close any remaining SQLite connections
-        from sqlite3 import Connection
-        for conn in Connection._connections.copy():
-            conn.close()
-        
-        # Force garbage collection
-        import gc
-        gc.collect()
-        
-        # Delete the file
-        try:
-            if os.path.exists(self.db_file):
+        # Remove the file if it exists
+        if os.path.exists(self.db_file):
+            try:
                 os.remove(self.db_file)
-                print(f"Database file {self.db_file} deleted")
-            else:
-                print(f"Database file {self.db_file} does not exist")
-        except Exception as e:
-            print(f"Error deleting database: {e}")
+                print(f"Database file {self.db_file} successfully deleted")
+            except PermissionError:
+                print(f"Could not delete {self.db_file}. File might be in use.")
 
     def insert_dataframe(self, table_name: str, dataframe: pd.DataFrame):
         """Insert a DataFrame into a specified table"""
