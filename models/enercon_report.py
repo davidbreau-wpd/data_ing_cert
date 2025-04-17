@@ -296,11 +296,11 @@ class Enercon_Report(_Service_Report):
         """
         formatting_pipeline = [
             self._filter_inspection_rows,
-            super().standardize_columns
+            super().standardize_columns,
+            lambda x: self.merge_rows_by_capitalization(x, new_line=True)
         ]
         
         formatted_table = super()._apply_formatting_pipeline(df, formatting_pipeline)
-        
         return formatted_table
 
     def visualize_extraction_parameters(self, page_number: int, **kwargs):

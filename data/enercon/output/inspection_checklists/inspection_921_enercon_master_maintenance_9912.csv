@@ -48,9 +48,9 @@
 69,41,Checking the LV earth fault detection system current sensor,1 Done - No defects
 70,42,Checking the RCD and emergency lighting system for the service hoist,1 Done - No defects
 71,Electrics - Tower,,
-72,43,Checking and measuring the flexible power cables,1 Done - No defects
-73,,Measured values for item 43,
-74,,reduction factor fR,0.98
+72,43,"Checking and measuring the flexible power cables
+Measured values for item 43
+reduction factor fR",1 Done - No defects
 75,Electrical system – Machine house,,
 76,44,Check warning systems for nacelle,1 Done - No defects
 77,45,Checking the horns,1 Done - No defects
@@ -130,9 +130,9 @@
 153,109,Checking the mounting of the safety ladder,1 Done - No defects
 154,110,Checking the rungs of the safety ladder,1 Done - No defects
 155,111,Checking gap widths on ladder sections,2 Done - Defects detected
-156,112,Visually inspecting safety ladder,1 Done - No defects
-157,,Measured values for item 112,
-158,,manufacturer / type safety ladder,LMB (SCS) - Tr280
+156,112,"Visually inspecting safety ladder
+Measured values for item 112
+manufacturer / type safety ladder",1 Done - No defects
 160,113,Checking the safety catches of the safety ladder,1 Done - No defects
 161,114,Checking the lateral rail exits of the safety ladder,1 Done - No defects
 162,115,Checking the small rest platforms of the safety ladder,1 Done - No defects
@@ -140,20 +140,20 @@
 164,117,Performing a test climb of the safety ladder,1 Done - No defects
 165,118,Checking the ‘Next Check’ inspection label on the safety ladder,2 Done - Defects detected
 166,Mechanical - Service hoist,,
-167,119,Checking the completeness of document pouch on service hoist,1 Done - No defects
-168,,Measured values for item 119,
-169,,next (third-party) inspection - month,5
-170,,next (third-party) inspection - year,2024
-171,120,Checking safety signs on service hoist,1 Done - No defects
-172,,Measured values for item 120,
-173,,Service hoist type,ENERCON EL1 V2.0
-174,,serial number service hoist,10-7553
-175,121,Checking the hoist cage of the service hoist,2 Done - Defects detected
-176,,Measured values for item 121,
-177,,"Opening dimension of door profile, measuring point 1",1 mm
-178,,"Opening dimension of door profile, measuring point 2",2 mm
-179,,"Opening dimension of door profile, measuring point 3",3 mm
-180,,"Opening dimension of door profile, measuring point 4",3 mm
+167,119,"Checking the completeness of document pouch on service hoist
+Measured values for item 119
+next (third-party) inspection - month
+next (third-party) inspection - year",1 Done - No defects
+171,120,"Checking safety signs on service hoist
+Measured values for item 120
+Service hoist type
+serial number service hoist",1 Done - No defects
+175,121,"Checking the hoist cage of the service hoist
+Measured values for item 121
+Opening dimension of door profile, measuring point 1
+Opening dimension of door profile, measuring point 2
+Opening dimension of door profile, measuring point 3
+Opening dimension of door profile, measuring point 4",2 Done - Defects detected
 181,122,Checking anchorage points on service hoist,1 Done - No defects
 182,123,Checking the wire rope guides on service hoist,1 Done - No defects
 183,124,Checking the key-operated switch in the lift cage,1 Done - No defects
@@ -169,15 +169,15 @@
 193,134,Checking the cable fasteners with landing box,1 Done - No defects
 195,135,Checking the tension of guide ropes on service hoist,1 Done - No defects
 196,136,Checking the indicator lights on service hoist,1 Done - No defects
-197,137,Checking service hoist winch,1 Done - No defects
-198,,Measured values for item 137,
-199,,Operating hours,14 h
-200,,YOM of winch,2017
-201,,serial number winch,212-w819331
-202,138,Checking the service hoist safety catch,1 Done - No defects
-203,,Measured values for item 138,
-204,,Safety catch designation,Goracon G-Lock 600 (60955)
-205,,serial number safety catch,F827178
+197,137,"Checking service hoist winch
+Measured values for item 137
+Operating hours
+YOM of winch
+serial number winch",1 Done - No defects
+202,138,"Checking the service hoist safety catch
+Measured values for item 138
+Safety catch designation
+serial number safety catch",1 Done - No defects
 206,139,Checking the automatic operation of the service hoist,2 Done - Defects detected
 207,140,Checking the steel cable for the service hoist,1 Done - No defects
 208,141,Oiling the steel cable for the service hoist,1 Done - No defects
@@ -191,11 +191,11 @@
 216,149,Completing work on the service hoist,1 Done - No defects
 217,Mechanical - Machine house,,
 218,150,Checking the machine house anchorage points,1 Done - No defects
-219,151,Inspect nacelle crane mechanically with chain hoist,1 Done - No defects
-220,,Measured values for item 151,
-221,,YOM of winch,2017
-222,,HERSTELLER WINDE,DEMAG Cranes & Components GmbH
-223,,serial number winch,94741590
+219,151,"Inspect nacelle crane mechanically with chain hoist
+Measured values for item 151
+YOM of winch
+HERSTELLER WINDE
+serial number winch",1 Done - No defects
 224,152,Checking the machine house first aid kit,1 Done - No defects
 225,153,Checking the machine house fire extinguisher,2 Done - Defects detected
 226,154,Checking the Firespy fire-extinguishing system in the machine house,3 Not done - Not necessary

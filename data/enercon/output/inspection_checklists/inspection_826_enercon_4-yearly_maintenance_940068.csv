@@ -6,17 +6,17 @@
 25,4,Check access control,3 Not done - Not necessary
 26,5,Testing ice detection system,1 Done - No defects
 28,6,Check function of Labkotec ice detection system,3 Not done - Not necessary
-29,7,Measure earth resistance at tower base,1 Done - No defects
-30,,Measured values for item 7,
-31,,Air humidity,dry
-32,,Soil condition,dry
-33,,Outside temperature,25.0 °C
-34,,Measurement 1,1.6 Ω
-35,,Measurement 2,1.7 Ω
-36,,Measurement 3,1.8 Ω
-37,,Average value,1.7 Ω
-38,,Orientation of measuring probes,D
-39,,"Test set-up with decoiler, 50m (SAP 146596)",Yes
+29,7,"Measure earth resistance at tower base
+Measured values for item 7
+Air humidity
+Soil condition
+Outside temperature
+Measurement 1
+Measurement 2
+Measurement 3
+Average value
+Orientation of measuring probes
+Test set-up with decoiler, 50m (SAP 146596)",1 Done - No defects
 40,8,Measuring blade heating system currents on tower base,3 Not done - Not necessary
 41,9,Checking smoke detection system,3 Not done - Not necessary
 42,Electrics - External transformer station,,
@@ -56,59 +56,59 @@
 77,42,Checking the foundation basement,1 Done - No defects
 78,43,Checking AC busbar system V3,1 Done - No defects
 79,Electrical system – Tower base,,
-80,44,Test the continuity of the tower base protective conductor system.,1 Done - No defects
-81,,Measured values for item 44,
-82,,bonding bar E-module 1 - foundation earth electrode,0.90 Ω
-83,,Bonding bar - tower entrance stairs,0.80 Ω
-84,,Bonding bar - crescent housing lighting for external area of tower door,1.00 Ω
-85,,Bonding bar - tower door frame (concrete towers only),1.00 Ω
-86,,"Bonding bar - Tower door lighting housing, indoor",1.00 Ω
-87,,Bonding bar - tower door socket,0.70 Ω
-88,,Bonding bar - tower door industrial power socket,0.80 Ω
-89,,Bonding bar - safety ladder,0.90 Ω
-90,,Bonding bar - service hoist socket,0.80 Ω
-91,,Bonding bar - service hoist lighting (only for Protection Class I),0.90 Ω
-92,,Bonding bar - service hoist housing,1.10 Ω
-93,,Bonding bar - Tower cabling holders,0.90 Ω
-95,,Bonding bar - Metal cover of floor duct in tensioning basement ceiling,1.00 Ω
-96,,Bonding bar - DC distribution system =045,0.90 Ω
-97,,Bonding bar - LV distribution system =104,1.00 Ω
-98,,Bonding bar - transformer,0.90 Ω
-99,,Bonding bar - grease pan of transformer,0.90 Ω
-100,,Bonding bar - switchgear of transformer,1.00 Ω
-101,,Bonding bar - remote control unit of MV switchgear =164,1.10 Ω
-102,,Bonding bar - Motor housing for tower fan 1,1.00 Ω
-103,,Bonding bar - Motor housing for tower fan 2,0.90 Ω
-104,,Bonding bar - Motor housing for tower fan 3,0.80 Ω
-105,,Bonding bar - control cabinet =005,0.90 Ω
-106,,Bonding bar - UPS cabinet =068,1.00 Ω
-107,,Bonding bar - socket in UPS cabinet =069,0.90 Ω
-108,45,Measuring insulation resistance,1 Done - No defects
-109,,Measured values for item 45,
-110,,Phase L1 - against PE of power cabinet 1,500.0 MΩ
-111,,Phase L2 - against PE of power cabinet 1,500.0 MΩ
-112,,Phase L3 - against PE of power cabinet 1,500.0 MΩ
-113,,Phase L1 - against PE of power cabinet 2,500.0 MΩ
-114,,Phase L2 - against PE of power cabinet 2,500.0 MΩ
-115,,Phase L3 - against PE of power cabinet 2,500.0 MΩ
-116,,Phase L1 - against PE of power cabinet 3,500.0 MΩ
-117,,Phase L2 - against PE of power cabinet 3,500.0 MΩ
-118,,Phase L3 - against PE of power cabinet 3,500.0 MΩ
-119,,Phase L1 - against PE of power cabinet 4,500.0 MΩ
-120,,Phase L2 - against PE of power cabinet 4,500.0 MΩ
-121,,Phase L3 - against PE of power cabinet 4,500.0 MΩ
-122,,Phase L1 - against PE of power cabinet 5,500.0 MΩ
-123,,Phase L2 - against PE of power cabinet 5,500.0 MΩ
-124,,Phase L3 - against PE of power cabinet 5,500.0 MΩ
-125,,Phase L1 - against PE of power cabinet 6,500.0 MΩ
-126,,Phase L2 - against PE of power cabinet 6,500.0 MΩ
-127,,Phase L3 - against PE of power cabinet 6,500.0 MΩ
-128,,Phase L1 - against PE of power cabinet 7,500.0 MΩ
-129,,Phase L2 - against PE of power cabinet 7,500.0 MΩ
-130,,Phase L3 - against PE of power cabinet 7,500.0 MΩ
-131,,Phase L1 - against PE of power cabinet 8,500.0 MΩ
-132,,Phase L2 - against PE of power cabinet 8,500.0 MΩ
-134,,Phase L3 - against PE of power cabinet 8,500.0 MΩ
+80,44,"Test the continuity of the tower base protective conductor system.
+Measured values for item 44
+bonding bar E-module 1 - foundation earth electrode
+Bonding bar - tower entrance stairs
+Bonding bar - crescent housing lighting for external area of tower door
+Bonding bar - tower door frame (concrete towers only)
+Bonding bar - Tower door lighting housing, indoor
+Bonding bar - tower door socket
+Bonding bar - tower door industrial power socket
+Bonding bar - safety ladder
+Bonding bar - service hoist socket
+Bonding bar - service hoist lighting (only for Protection Class I)
+Bonding bar - service hoist housing
+Bonding bar - Tower cabling holders
+Bonding bar - Metal cover of floor duct in tensioning basement ceiling
+Bonding bar - DC distribution system =045
+Bonding bar - LV distribution system =104
+Bonding bar - transformer
+Bonding bar - grease pan of transformer
+Bonding bar - switchgear of transformer
+Bonding bar - remote control unit of MV switchgear =164
+Bonding bar - Motor housing for tower fan 1
+Bonding bar - Motor housing for tower fan 2
+Bonding bar - Motor housing for tower fan 3
+Bonding bar - control cabinet =005
+Bonding bar - UPS cabinet =068
+Bonding bar - socket in UPS cabinet =069",1 Done - No defects
+108,45,"Measuring insulation resistance
+Measured values for item 45
+Phase L1 - against PE of power cabinet 1
+Phase L2 - against PE of power cabinet 1
+Phase L3 - against PE of power cabinet 1
+Phase L1 - against PE of power cabinet 2
+Phase L2 - against PE of power cabinet 2
+Phase L3 - against PE of power cabinet 2
+Phase L1 - against PE of power cabinet 3
+Phase L2 - against PE of power cabinet 3
+Phase L3 - against PE of power cabinet 3
+Phase L1 - against PE of power cabinet 4
+Phase L2 - against PE of power cabinet 4
+Phase L3 - against PE of power cabinet 4
+Phase L1 - against PE of power cabinet 5
+Phase L2 - against PE of power cabinet 5
+Phase L3 - against PE of power cabinet 5
+Phase L1 - against PE of power cabinet 6
+Phase L2 - against PE of power cabinet 6
+Phase L3 - against PE of power cabinet 6
+Phase L1 - against PE of power cabinet 7
+Phase L2 - against PE of power cabinet 7
+Phase L3 - against PE of power cabinet 7
+Phase L1 - against PE of power cabinet 8
+Phase L2 - against PE of power cabinet 8
+Phase L3 - against PE of power cabinet 8",1 Done - No defects
 135,46,Checking fan housing air filter,3 Not done - Not necessary
 136,47,Check tower base electrical cabinets,1 Done - No defects
 137,48,Check electrical cabinet overvoltage limitation on tower base,1 Done - No defects
@@ -123,54 +123,54 @@
 146,55,Checking the UPS,1 Done - No defects
 147,56,Checking the power cabinet fans,1 Done - No defects
 148,57,Check tower base emergency lights,2 Done - Defects detected
-149,58,Electrical testing of RCD – tower base,1 Done - No defects
-150,,Measured values for item 58,
-151,,Socket next to entrance door – Sinusoidal alternating current,18.0 ms
-152,,Socket next to entrance door – Sinusoidal alternating current,0 V
-153,,Socket next to entrance door – Sinusoidal alternating current,27.0 mA
+149,58,"Electrical testing of RCD – tower base
+Measured values for item 58
+Socket next to entrance door – Sinusoidal alternating current
+Socket next to entrance door – Sinusoidal alternating current
+Socket next to entrance door – Sinusoidal alternating current",1 Done - No defects
 154,59,Check upstream RCD electrically,3 Not done - Not necessary
 155,60,Checking the LV earth fault detection system current sensor,1 Done - No defects
 156,61,Checking RCD and emergency lights of service hoist,1 Done - No defects
-157,62,Check service hoist RCD electrically,1 Done - No defects
-158,,Measured values for item 62,
-159,,Service hoist socket – Sinusoidal alternating current,21.0 ms
-160,,Service hoist socket – Sinusoidal alternating current,0 V
-161,,Service hoist socket – Sinusoidal alternating current,26.0 mA
+157,62,"Check service hoist RCD electrically
+Measured values for item 62
+Service hoist socket – Sinusoidal alternating current
+Service hoist socket – Sinusoidal alternating current
+Service hoist socket – Sinusoidal alternating current",1 Done - No defects
 162,63,Check sockets in tower base,1 Done - No defects
-163,64,Measuring insulation resistance of sockets,1 Done - No defects
-164,,Measured values for item 64,
-165,,"Phase L1 industrial power socket, tower door - PE",500.0 MΩ
-166,,"Phase L2 industrial power socket, tower door - PE",500.0 MΩ
-167,,"Phase L3 industrial power socket, tower door - PE",500.0 MΩ
-169,,"Neutral conductor industrial power socket, tower door - PE",500.0 MΩ
-170,,"Phase L1 against phase L2 industrial power socket, tower door - PE",500.0 MΩ
-171,,"Phase L1 against phase L3 industrial power socket, tower door - PE",500.0 MΩ
-172,,"Phase L2 against phase L3 industrial power socket, tower door - PE",500.0 MΩ
-173,,"Phase of socket, tower door - PE",500.0 MΩ
-174,,"Neutral conductor of socket, tower door - PE",500.0 MΩ
-175,,"Phase of socket, in service hoist - PE",500.0 MΩ
-176,,Neutral conductor of socket in service hoist - PE,500.0 MΩ
+163,64,"Measuring insulation resistance of sockets
+Measured values for item 64
+Phase L1 industrial power socket, tower door - PE
+Phase L2 industrial power socket, tower door - PE
+Phase L3 industrial power socket, tower door - PE
+Neutral conductor industrial power socket, tower door - PE
+Phase L1 against phase L2 industrial power socket, tower door - PE
+Phase L1 against phase L3 industrial power socket, tower door - PE
+Phase L2 against phase L3 industrial power socket, tower door - PE
+Phase of socket, tower door - PE
+Neutral conductor of socket, tower door - PE
+Phase of socket, in service hoist - PE
+Neutral conductor of socket in service hoist - PE",1 Done - No defects
 177,Electrics - Tower,,
 178,65,Check tower sockets,1 Done - No defects
-179,66,Measure insulation resistance of sockets on tower,1 Done - No defects
-180,,Measured values for item 66,
-181,,Phase of upper socket in tower - PE,500.0 MΩ
-182,,Neutral conductor of upper socket in tower - PE,500.0 MΩ
-183,,Phase L1 of upper industrial power socket in tower - PE,500.0 MΩ
-184,,Phase L2 of upper industrial power socket in tower - PE,500.0 MΩ
-185,,Phase L3 of upper industrial power socket in tower - PE,500.0 MΩ
-186,,Neutral conductor of upper industrial power socket in tower - PE,500.0 MΩ
-187,,Phase L1 against phase L2 of upper industrial power socket in tower,500.0 MΩ
-188,,Phase L1 against phase L3 of upper industrial power socket in tower,500.0 MΩ
-189,,Phase L2 against phase L3 of upper industrial power socket in tower,500.0 MΩ
-190,67,Performing electrical test of the tower RCD,1 Done - No defects
-191,,Measured values for item 67,
-192,,The upper socket in the tower – Sinusoidal alternating current,26.0 ms
-193,,The upper socket in the tower – Sinusoidal alternating current,0 V
-194,,The upper socket in the tower – Sinusoidal alternating current,25.0 mA
-195,68,Checking and measuring the flexible power cables,1 Done - No defects
-196,,Measured values for item 68,
-197,,reduction factor fR,0.90
+179,66,"Measure insulation resistance of sockets on tower
+Measured values for item 66
+Phase of upper socket in tower - PE
+Neutral conductor of upper socket in tower - PE
+Phase L1 of upper industrial power socket in tower - PE
+Phase L2 of upper industrial power socket in tower - PE
+Phase L3 of upper industrial power socket in tower - PE
+Neutral conductor of upper industrial power socket in tower - PE
+Phase L1 against phase L2 of upper industrial power socket in tower
+Phase L1 against phase L3 of upper industrial power socket in tower
+Phase L2 against phase L3 of upper industrial power socket in tower",1 Done - No defects
+190,67,"Performing electrical test of the tower RCD
+Measured values for item 67
+The upper socket in the tower – Sinusoidal alternating current
+The upper socket in the tower – Sinusoidal alternating current
+The upper socket in the tower – Sinusoidal alternating current",1 Done - No defects
+195,68,"Checking and measuring the flexible power cables
+Measured values for item 68
+reduction factor fR",1 Done - No defects
 198,Electrical system – Machine house,,
 199,69,Check warning systems for nacelle,3 Not done - Not necessary
 200,70,Checking the horns,1 Done - No defects
@@ -178,23 +178,23 @@
 202,72,Checking the rotor lock,1 Done - No defects
 203,73,Performing an electrical test for the nacelle crane,1 Done - No defects
 204,74,Check the machine house sockets,1 Done - No defects
-205,75,Measure insulation resistance of sockets on machine house,1 Done - No defects
-207,,Measured values for item 75,
-208,,Phase L1 of industrial power socket 1 on nacelle control cabinet - PE,500.0 MΩ
-209,,Phase L2 of industrial power socket 1 on nacelle control cabinet - PE,500.0 MΩ
-210,,Phase L3 of industrial power socket 1 on nacelle control cabinet - PE,500.0 MΩ
-211,,Neutral conductor of industrial power socket 1 nacelle control cabinet - PE,500.0 MΩ
-212,,Phase L1 against L2 of industrial power socket 1 on nacelle control cabinet,500.0 MΩ
-213,,Phase L1 against L3 of industrial power socket 1 on nacelle control cabinet,500.0 MΩ
-214,,Phase L2 against L3 of industrial power socket 1 on nacelle control cabinet,500.0 MΩ
-215,,Phase of socket on nacelle control cabinet - PE,500.0 MΩ
-216,,Neutral conductor of socket on nacelle control cabinet - PE,500.0 MΩ
+205,75,"Measure insulation resistance of sockets on machine house
+Measured values for item 75
+Phase L1 of industrial power socket 1 on nacelle control cabinet - PE
+Phase L2 of industrial power socket 1 on nacelle control cabinet - PE
+Phase L3 of industrial power socket 1 on nacelle control cabinet - PE
+Neutral conductor of industrial power socket 1 nacelle control cabinet - PE
+Phase L1 against L2 of industrial power socket 1 on nacelle control cabinet
+Phase L1 against L3 of industrial power socket 1 on nacelle control cabinet
+Phase L2 against L3 of industrial power socket 1 on nacelle control cabinet
+Phase of socket on nacelle control cabinet - PE
+Neutral conductor of socket on nacelle control cabinet - PE",1 Done - No defects
 217,76,Check the emergency lighting system on the machine house,1 Done - No defects
-218,77,Checking the machine house RCD,1 Done - No defects
-219,,Measured values for item 77,
-220,,Socket on nacelle control cabinet – Sinusoidal alternating current,25.0 ms
-221,,Socket on nacelle control cabinet – Sinusoidal alternating current,0 V
-222,,Socket on nacelle control cabinet – Sinusoidal alternating current,27.0 mA
+218,77,"Checking the machine house RCD
+Measured values for item 77
+Socket on nacelle control cabinet – Sinusoidal alternating current
+Socket on nacelle control cabinet – Sinusoidal alternating current
+Socket on nacelle control cabinet – Sinusoidal alternating current",1 Done - No defects
 223,78,Checking the yaw drives,1 Done - No defects
 224,79,Checking smoke detector in machine house,1 Done - No defects
 225,80,Checking the nacelle noise sensor,1 Done - No defects
@@ -209,66 +209,66 @@
 234,89,Checking generator filter cabinet,1 Done - No defects
 235,90,Check electrical cabinet overvoltage limitation on machine house,1 Done - No defects
 236,91,Measuring loop impedance,1 Done - No defects
-237,92,Measure continuity of protective conductor system on machine house,1 Done - No defects
-238,,Measured values for item 92,
-239,,Bonding bar - Lighting (only for Protection Class I),1.60 Ω
-240,,Bonding bar - industrial power socket on main carrier,1.40 Ω
-241,,Bonding bar - exterior tower lighting switch socket,1.80 Ω
-242,,Bonding bar - excitation controller box =018,1.50 Ω
-244,,"Bonding bar - fan, frequency converter cabinet =088+1",1.70 Ω
-245,,Bonding bar - Yaw inverter cabinet = 102,1.70 Ω
-246,,Bonding bar – Yaw inverter cabinet socket =102,1.60 Ω
-247,,Bonding bar - nacelle control cabinet =015,1.90 Ω
-248,,Bonding bar - industrial power socket 1 on nacelle control cabinet,1.70 Ω
-249,,Bonding bar - socket on nacelle control cabinet,1.50 Ω
-250,,Bonding bar - winch motor housing,1.90 Ω
-251,,Bonding bar - beacon system control cabinet=115,1.90 Ω
-252,,Bonding bar - yaw motor 1,1.60 Ω
-253,,Bonding bar - yaw motor 2,1.70 Ω
-254,,Bonding bar - yaw motor 3,1.50 Ω
-255,,Bonding bar - yaw motor 4,1.50 Ω
-256,,Bonding bar - yaw motor 5,1.60 Ω
-257,,Bonding bar - yaw motor 6,1.80 Ω
-258,,Bonding bar - rectifier cabinet =017+1,1.80 Ω
-259,,Bonding bar - rectifier cabinet =017+2,1.70 Ω
-260,,Bonding bar - filter cabinet =066 part 1.1,1.60 Ω
-261,,Bonding bar - stator sub distribution system =014,1.80 Ω
-262,,Bonding bar - stator,1.50 Ω
-263,,Bonding bar - motor housing for generator air 1,1.50 Ω
-264,,Bonding bar - motor housing for generator air 2,1.60 Ω
+237,92,"Measure continuity of protective conductor system on machine house
+Measured values for item 92
+Bonding bar - Lighting (only for Protection Class I)
+Bonding bar - industrial power socket on main carrier
+Bonding bar - exterior tower lighting switch socket
+Bonding bar - excitation controller box =018
+Bonding bar - fan, frequency converter cabinet =088+1
+Bonding bar - Yaw inverter cabinet = 102
+Bonding bar – Yaw inverter cabinet socket =102
+Bonding bar - nacelle control cabinet =015
+Bonding bar - industrial power socket 1 on nacelle control cabinet
+Bonding bar - socket on nacelle control cabinet
+Bonding bar - winch motor housing
+Bonding bar - beacon system control cabinet=115
+Bonding bar - yaw motor 1
+Bonding bar - yaw motor 2
+Bonding bar - yaw motor 3
+Bonding bar - yaw motor 4
+Bonding bar - yaw motor 5
+Bonding bar - yaw motor 6
+Bonding bar - rectifier cabinet =017+1
+Bonding bar - rectifier cabinet =017+2
+Bonding bar - filter cabinet =066 part 1.1
+Bonding bar - stator sub distribution system =014
+Bonding bar - stator
+Bonding bar - motor housing for generator air 1
+Bonding bar - motor housing for generator air 2",1 Done - No defects
 265,93,Check torque monitoring system on machine house,1 Done - No defects
 266,Electrics - Rotor head,,
 267,94,Checking lights in rotor head,1 Done - No defects
 268,95,Check rotor head electrical cabinets,1 Done - No defects
 269,96,Checking the pitch transformer box,1 Done - No defects
 270,97,Check electrical cabinet overvoltage limitation on rotor head,1 Done - No defects
-271,98,Measure continuity of protective conductor system on rotor head,1 Done - No defects
-272,,Measured values for item 98,
-273,,Bonding bar - spinner lighting,2.00 Ω
-274,,Bonding bar - blade relay box A =011,1.80 Ω
-275,,bonding bar - pitch control box A =012,1.90 Ω
-276,,Bonding bar - compact limit switch A =028,1.70 Ω
-277,,Bonding bar - rotor blade A capacitor box =076,1.80 Ω
-278,,Bonding bar - blade relay box B =011,1.50 Ω
-279,,Bonding bar - pitch control box B =012,1.70 Ω
-280,,Bonding bar - compact limit switch B =028,1.50 Ω
-281,,Bonding bar - rotor blade B capacitor box =076,1.90 Ω
-283,,Bonding bar - blade relay box C =011,1.40 Ω
-284,,Bonding bar - pitch control box C =012,1.80 Ω
-285,,Bonding bar - compact limit switch C =028,1.70 Ω
-286,,Bonding bar - rotor blade C capacitor box =076,1.70 Ω
-287,,Bonding bar - rotor sub-distribution system =013,1.80 Ω
-288,,Bonding bar - slip ring unit =051,1.80 Ω
+271,98,"Measure continuity of protective conductor system on rotor head
+Measured values for item 98
+Bonding bar - spinner lighting
+Bonding bar - blade relay box A =011
+bonding bar - pitch control box A =012
+Bonding bar - compact limit switch A =028
+Bonding bar - rotor blade A capacitor box =076
+Bonding bar - blade relay box B =011
+Bonding bar - pitch control box B =012
+Bonding bar - compact limit switch B =028
+Bonding bar - rotor blade B capacitor box =076
+Bonding bar - blade relay box C =011
+Bonding bar - pitch control box C =012
+Bonding bar - compact limit switch C =028
+Bonding bar - rotor blade C capacitor box =076
+Bonding bar - rotor sub-distribution system =013
+Bonding bar - slip ring unit =051",1 Done - No defects
 289,99,Check power sockets in rotor head,1 Done - No defects
-290,100,Measuring insulation resistance of sockets,1 Done - No defects
-291,,Measured values for item 100,
-292,,"Phase of socket, on the rotor - PE",500.0 MΩ
-293,,Neutral conductor of socket on the rotor - PE,500.0 MΩ
-294,101,Perform electrical check of RCD on rotor head,1 Done - No defects
-295,,Measured values for item 101,
-296,,Socket on the rotor – Sinusoidal alternating current,27.0 ms
-297,,Socket on the rotor – Sinusoidal alternating current,0 V
-298,,Socket on the rotor – Sinusoidal alternating current,24.0 mA
+290,100,"Measuring insulation resistance of sockets
+Measured values for item 100
+Phase of socket, on the rotor - PE
+Neutral conductor of socket on the rotor - PE",1 Done - No defects
+294,101,"Perform electrical check of RCD on rotor head
+Measured values for item 101
+Socket on the rotor – Sinusoidal alternating current
+Socket on the rotor – Sinusoidal alternating current
+Socket on the rotor – Sinusoidal alternating current",1 Done - No defects
 299,102,Checking the Cobham slip ring unit and Label slip ring unit,3 Not done - Not necessary
 300,103,Checking the ENERCON slip ring unit,1 Done - No defects
 301,104,Checking the bearing seal on the ENERCON,1 Done - No defects
@@ -357,12 +357,12 @@
 387,Mechanical - Service hoist,,
 388,178,Checking the completeness of document pouch on service hoist,1 Done - No defects
 389,179,Checking safety signs on service hoist,1 Done - No defects
-390,180,Checking the hoist cage of the service hoist,1 Done - No defects
-391,,Measured values for item 180,
-392,,"Opening dimension of door profile, measuring point 1",2 mm
-393,,"Opening dimension of door profile, measuring point 2",2 mm
-394,,"Opening dimension of door profile, measuring point 3",2 mm
-395,,"Opening dimension of door profile, measuring point 4",2 mm
+390,180,"Checking the hoist cage of the service hoist
+Measured values for item 180
+Opening dimension of door profile, measuring point 1
+Opening dimension of door profile, measuring point 2
+Opening dimension of door profile, measuring point 3
+Opening dimension of door profile, measuring point 4",1 Done - No defects
 396,181,Checking anchorage points on service hoist,1 Done - No defects
 397,182,Checking the wire rope guides on service hoist,1 Done - No defects
 398,183,Checking the key-operated switch in the lift cage,1 Done - No defects
@@ -379,11 +379,11 @@
 409,194,Checking the cable fasteners without landing box,3 Not done - Not necessary
 410,195,Checking the tension of guide ropes on service hoist,1 Done - No defects
 411,196,Checking the indicator lights on service hoist,1 Done - No defects
-412,197,Checking service hoist winch,1 Done - No defects
-413,,Measured values for item 197,
-414,,Winch,Goracon  G-Trac 600 (060918-03)
-415,,Operating hours,25 h
-416,,YOM of winch,2015
+412,197,"Checking service hoist winch
+Measured values for item 197
+Winch
+Operating hours
+YOM of winch",1 Done - No defects
 417,198,Checking the service hoist safety catch,1 Done - No defects
 419,199,Checking the automatic operation of the service hoist,4 Not done - Assembly suspended
 420,200,Checking the steel cable for the service hoist,1 Done - No defects
@@ -398,9 +398,9 @@
 429,209,Completing work on the service hoist,1 Done - No defects
 430,Mechanical - Machine house,,
 431,210,Checking the machine house anchorage points,1 Done - No defects
-432,211,Inspect nacelle crane mechanically with chain hoist,1 Done - No defects
-433,,measured values of item 211,
-434,,YOM of winch,2015
+432,211,"Inspect nacelle crane mechanically with chain hoist
+measured values of item 211
+YOM of winch",1 Done - No defects
 435,212,Checking the machine house first aid kit,1 Done - No defects
 436,213,Checking the machine house fire extinguisher,1 Done - No defects
 437,214,Checking the Firespy fire-extinguishing system in the machine house,3 Not done - Not necessary

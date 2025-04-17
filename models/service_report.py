@@ -296,42 +296,34 @@ class _Service_Report:
         
         return result
 
-    def merge_rows_by_capitalization(self, df: pd.DataFrame) -> pd.DataFrame:
+    def merge_rows_by_capitalization(self, df: pd.DataFrame, new_line: bool = False) -> pd.DataFrame:
         """
-        Description:
-            Merges rows based on the capitalization of the first character.
-            If a row's first character is not uppercase, it's considered a continuation
-            of the previous row.
-
+        Merge rows where the first column is empty with the previous row.
+        
         Args:
-            df (pd.DataFrame): The DataFrame to clean. Expected to have at least two columns:
-                             - Column 0: Main content (used for capitalization check)
-                             - Column 1: Additional information
-
+            df (pd.DataFrame): DataFrame to process
+            new_line (bool): If True, adds a newline character between merged texts.
+                           If False, concatenates directly. Default is False.
+        
         Returns:
-            pd.DataFrame: The DataFrame with merged continuation rows.
+            pd.DataFrame: DataFrame with merged rows
         """
-        cleaned_df = df.copy()
-        last_valid_idx = None
-        to_drop = []
+        result = []
+        current_row = None
         
-        for idx in cleaned_df.index:
-            if pd.notna(cleaned_df.loc[idx, 0]) and str(cleaned_df.loc[idx, 0]).strip():
-                first_char = str(cleaned_df.loc[idx, 0]).strip()[0]
-                if not first_char.isupper() and last_valid_idx is not None:
-                    cleaned_df.loc[last_valid_idx, 0] = (str(cleaned_df.loc[last_valid_idx, 0]) + ' ' + 
-                                                      str(cleaned_df.loc[idx, 0])).strip()
-                    
-                    if pd.notna(cleaned_df.loc[idx, 1]) and str(cleaned_df.loc[idx, 1]).strip():
-                        if pd.isna(cleaned_df.loc[last_valid_idx, 1]) or not str(cleaned_df.loc[last_valid_idx, 1]).strip():
-                            cleaned_df.loc[last_valid_idx, 1] = cleaned_df.loc[idx, 1]
-                    
-                    to_drop.append(idx)
-                else:
-                    last_valid_idx = idx
+        for _, row in df.iterrows():
+            if pd.isna(row[0]) or str(row[0]).strip() == '':
+                if current_row is not None:
+                    separator = '\n' if new_line else ' '
+                    current_row[1] = f"{current_row[1]}{separator}{row[1]}"
+            else:
+                if current_row is not None:
+                    result.append(current_row)
+                current_row = row.copy()
+        
+        if current_row is not None:
+            result.append(current_row)
             
-        cleaned_df = cleaned_df.drop(to_drop)
-        
-        return cleaned_df
+        return pd.DataFrame(result)
 
 

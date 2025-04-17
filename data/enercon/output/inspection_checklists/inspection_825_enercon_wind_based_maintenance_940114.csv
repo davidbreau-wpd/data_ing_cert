@@ -1,9 +1,9 @@
 ,no,check_item,result
 18,Electrical system – Tower base,,
 19,1,Performing overspeed switch test,3 Not done - Not necessary
-20,2,Carrying out the overspeed switch test with test weight,1 Done - No defects
-21,,Measured values for item 2,
-22,,"Trigger speed, rotor blade C",25.87 rpm
+20,2,"Carrying out the overspeed switch test with test weight
+Measured values for item 2
+Trigger speed, rotor blade C",1 Done - No defects
 23,Electrics - Rotor head,,
 24,3,Setting overspeed switch trigger speed CS40,3 Not done - Not necessary
 25,4,"Setting overspeed switch trigger speed CS30, CS31a, CS44a/b, CS58a/b, CS66, CS70a/b",3 Not done - Not necessary
