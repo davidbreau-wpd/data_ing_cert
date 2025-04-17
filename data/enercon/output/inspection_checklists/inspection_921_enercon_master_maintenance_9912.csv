@@ -1,12 +1,10 @@
 ,no,check_item,result
-20,No.,Check item,Result
 21,Electrical system – Tower base,,
 22,1,Check tower base warning systems,1 Done - No defects
 23,2,Check software level,2 Done - Defects detected
 24,3,Check access control,3 Not done - Not necessary
 25,4,Testing ice detection system,1 Done - No defects
 26,5,Check function of Labkotec ice detection system,3 Not done - Not necessary
-27,No.,Check item,Result
 28,6,Measuring blade heating system currents on tower base,3 Not done - Not necessary
 29,7,Checking smoke detection system,3 Not done - Not necessary
 30,Electrics - External transformer station,,
@@ -37,7 +35,6 @@
 55,30,Checking fan housing air filter,3 Not done - Not necessary
 56,31,Check the tower base earthing system,1 Done - No defects
 57,32,Check tower base electrical cabinets,1 Done - No defects
-58,No.,Check item,Result
 59,33,Check electrical cabinet overvoltage limitation on tower base,1 Done - No defects
 60,34,Checking DC distribution system,1 Done - No defects
 61,35,Checking the SCADA interface backup battery,1 Done - No defects
@@ -71,7 +68,6 @@
 89,56,Check earthing system on rotor head,1 Done - No defects
 90,57,Check rotor head electrical cabinets,2 Done - Defects detected
 91,58,Checking the pitch transformer box,1 Done - No defects
-92,No.,Check item,Result
 93,59,Check electrical cabinet overvoltage limitation on rotor head,1 Done - No defects
 94,60,Check RCD and emergency lights in rotor head,1 Done - No defects
 95,61,Checking the Cobham slip ring unit and Label slip ring unit,3 Not done - Not necessary
@@ -104,7 +100,6 @@
 122,85,Testing the E-module EMERGENCY STOP button,1 Done - No defects
 123,86,Checking the main safety circuit relay K4 emergency shutdown,1 Done - No defects
 124,87,Checking emergency shutdown MSC relay K3,1 Done - No defects
-125,No.,Check item,Result
 126,88,Checking the rotor lock emergency shutdown,1 Done - No defects
 127,89,Checking the vibration sensor emergency shutdown,1 Done - No defects
 128,Electrical system – Machine house,,
@@ -138,7 +133,6 @@
 156,112,Visually inspecting safety ladder,1 Done - No defects
 157,,Measured values for item 112,
 158,,manufacturer / type safety ladder,LMB (SCS) - Tr280
-159,No.,Check item,Result
 160,113,Checking the safety catches of the safety ladder,1 Done - No defects
 161,114,Checking the lateral rail exits of the safety ladder,1 Done - No defects
 162,115,Checking the small rest platforms of the safety ladder,1 Done - No defects
@@ -173,7 +167,6 @@
 191,132,Checking the service hoist emergency control unit,1 Done - No defects
 192,133,Checking the hoist cable and safety cable at the hoist touchdown platform,1 Done - No defects
 193,134,Checking the cable fasteners with landing box,1 Done - No defects
-194,No.,Check item,Result
 195,135,Checking the tension of guide ropes on service hoist,1 Done - No defects
 196,136,Checking the indicator lights on service hoist,1 Done - No defects
 197,137,Checking service hoist winch,1 Done - No defects
@@ -207,7 +200,6 @@
 225,153,Checking the machine house fire extinguisher,2 Done - Defects detected
 226,154,Checking the Firespy fire-extinguishing system in the machine house,3 Not done - Not necessary
 227,155,Checking the machine house fitted parts,1 Done - No defects
-228,No.,Check item,Result
 229,156,Checking the machine house casing,1 Done - No defects
 230,157,Checking the main carrier and the axle pin,1 Done - No defects
 231,158,Checking yaw gears,2 Done - Defects detected
@@ -239,7 +231,6 @@
 257,183,Check lightning protection system of rotor blade C,1 Done - No defects
 258,184,Checking the rotor head bolt connections,1 Done - No defects
 259,185,Visual inspection of rotor head,2 Done - Defects detected
-260,No.,Check item,Result
 261,Mechanical - Rotor blade,,
 262,186,Checking the rotor blade A bolt connections,1 Done - No defects
 263,187,Checking the rotor blade B bolt connections,1 Done - No defects
@@ -268,9 +259,7 @@
 286,207,Repair paint,3 Not done - Not necessary
 287,208,Acoustic check of WEC,1 Done - No defects
 288,Report overview,,
-289,No.,Defect locationDefect type,Report
 290,2,"special, control system - Software tower, tower base - Cabinet, control cabinet insideversion incorrect",920079187006
-291,No.,Defect locationDefect type,Report
 292,39,"special, electrical component - battery tower, tower base - cabinet, lightingdischarged",920079187005
 293,57,"blade system A - cabinet, capacitortesting/safety - label/sign missing",920061438810
 294,63,"rotor system - slip ring unitspecial, sealing - sealing missing",920079187015

@@ -265,8 +265,6 @@ class Enercon_Report(_Service_Report):
 
     def _filter_inspection_rows(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Filters inspection table rows between 'Details' and 'Signature' sections.
-
         This method extracts the relevant inspection data by:
         1. Finding the row after the 'Details' header
         2. Finding the row before the 'Signature' section
@@ -278,7 +276,11 @@ class Enercon_Report(_Service_Report):
         Returns:
             pd.DataFrame: Filtered DataFrame containing only inspection data rows
         """
-        return df.loc[df[0].eq("Details").idxmax() + 1:df[0].str.contains("Signature", na=False).idxmax() - 1]
+        # First get rows between Details and Signature
+        filtered_df = df.loc[df[0].eq("Details").idxmax() + 1:df[0].str.contains("Signature", na=False).idxmax() - 1]
+        
+        # Then remove any remaining header rows
+        return filtered_df[~filtered_df[0].eq("No.")]
 
     def format_table(self, df: pd.DataFrame) -> pd.DataFrame:
         """

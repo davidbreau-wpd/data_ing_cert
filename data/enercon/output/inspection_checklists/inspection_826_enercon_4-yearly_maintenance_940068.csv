@@ -1,12 +1,10 @@
 ,no,check_item,result
-20,No.,Check item,Result
 21,Electrical system – Tower base,,
 22,1,Check tower base warning systems,3 Not done - Not necessary
 23,2,Check software level,1 Done - No defects
 24,3,Checking the Industrial Ethernet plug-in,3 Not done - Not necessary
 25,4,Check access control,3 Not done - Not necessary
 26,5,Testing ice detection system,1 Done - No defects
-27,No.,Check item,Result
 28,6,Check function of Labkotec ice detection system,3 Not done - Not necessary
 29,7,Measure earth resistance at tower base,1 Done - No defects
 30,,Measured values for item 7,
@@ -38,7 +36,6 @@
 56,23,Terminal lugs – check low-voltage distribution system of external transformer station,3 Not done - Not necessary
 57,24,Check external transformer station basement,3 Not done - Not necessary
 58,25,Checking the external transformer station UPS,3 Not done - Not necessary
-59,No.,Check item,Result
 60,Electrics - WEC medium voltage area,,
 61,26,Checking the capacitive voltage taps,1 Done - No defects
 62,27,Checking the ENERCON transformer protection system,1 Done - No defects
@@ -73,7 +70,6 @@
 91,,Bonding bar - service hoist lighting (only for Protection Class I),0.90 Ω
 92,,Bonding bar - service hoist housing,1.10 Ω
 93,,Bonding bar - Tower cabling holders,0.90 Ω
-94,No.,Check item,Result
 95,,Bonding bar - Metal cover of floor duct in tensioning basement ceiling,1.00 Ω
 96,,Bonding bar - DC distribution system =045,0.90 Ω
 97,,Bonding bar - LV distribution system =104,1.00 Ω
@@ -112,7 +108,6 @@
 130,,Phase L3 - against PE of power cabinet 7,500.0 MΩ
 131,,Phase L1 - against PE of power cabinet 8,500.0 MΩ
 132,,Phase L2 - against PE of power cabinet 8,500.0 MΩ
-133,No.,Check item,Result
 134,,Phase L3 - against PE of power cabinet 8,500.0 MΩ
 135,46,Checking fan housing air filter,3 Not done - Not necessary
 136,47,Check tower base electrical cabinets,1 Done - No defects
@@ -147,7 +142,6 @@
 165,,"Phase L1 industrial power socket, tower door - PE",500.0 MΩ
 166,,"Phase L2 industrial power socket, tower door - PE",500.0 MΩ
 167,,"Phase L3 industrial power socket, tower door - PE",500.0 MΩ
-168,No.,Check item,Result
 169,,"Neutral conductor industrial power socket, tower door - PE",500.0 MΩ
 170,,"Phase L1 against phase L2 industrial power socket, tower door - PE",500.0 MΩ
 171,,"Phase L1 against phase L3 industrial power socket, tower door - PE",500.0 MΩ
@@ -185,7 +179,6 @@
 203,73,Performing an electrical test for the nacelle crane,1 Done - No defects
 204,74,Check the machine house sockets,1 Done - No defects
 205,75,Measure insulation resistance of sockets on machine house,1 Done - No defects
-206,No.,Check item,Result
 207,,Measured values for item 75,
 208,,Phase L1 of industrial power socket 1 on nacelle control cabinet - PE,500.0 MΩ
 209,,Phase L2 of industrial power socket 1 on nacelle control cabinet - PE,500.0 MΩ
@@ -222,7 +215,6 @@
 240,,Bonding bar - industrial power socket on main carrier,1.40 Ω
 241,,Bonding bar - exterior tower lighting switch socket,1.80 Ω
 242,,Bonding bar - excitation controller box =018,1.50 Ω
-243,No.,Check item,Result
 244,,"Bonding bar - fan, frequency converter cabinet =088+1",1.70 Ω
 245,,Bonding bar - Yaw inverter cabinet = 102,1.70 Ω
 246,,Bonding bar – Yaw inverter cabinet socket =102,1.60 Ω
@@ -261,7 +253,6 @@
 279,,Bonding bar - pitch control box B =012,1.70 Ω
 280,,Bonding bar - compact limit switch B =028,1.50 Ω
 281,,Bonding bar - rotor blade B capacitor box =076,1.90 Ω
-282,No.,Check item,Result
 283,,Bonding bar - blade relay box C =011,1.40 Ω
 284,,Bonding bar - pitch control box C =012,1.80 Ω
 285,,Bonding bar - compact limit switch C =028,1.70 Ω
@@ -296,7 +287,6 @@
 314,117,Checking discharge box of rotor blade C,1 Done - No defects
 315,118,"Checking blade heating, rotor blade A",3 Not done - Not necessary
 316,119,"Checking blade heating, rotor blade B",3 Not done - Not necessary
-317,No.,Check item,Result
 318,120,"Checking blade heating, rotor blade C",3 Not done - Not necessary
 319,121,Checking connection of lightning protection on rotor blade A,1 Done - No defects
 320,122,Checking connection of lightning protection on rotor blade B,1 Done - No defects
@@ -328,7 +318,6 @@
 346,145,Checking the rotor lock emergency shutdown,1 Done - No defects
 347,146,Checking the vibration sensor emergency shutdown,1 Done - No defects
 348,Electrical system – Machine house,,
-349,No.,Check item,Result
 350,147,Check resistances in the heating element of the blade heating system,1 Done - No defects
 351,Electrics-country-specif. maint. items,,
 352,148,Stopping the WEC,1 Done - No defects
@@ -362,7 +351,6 @@
 380,172,Checking the safety catches of the safety ladder,1 Done - No defects
 381,173,Checking the lateral rail exits of the safety ladder,1 Done - No defects
 382,174,Checking the small rest platforms of the safety ladder,1 Done - No defects
-383,No.,Check item,Result
 384,175,Checking the safety ladder fasteners,1 Done - No defects
 385,176,Performing a test climb of the safety ladder,1 Done - No defects
 386,177,Checking the ‘Next Check’ inspection label on the safety ladder,1 Done - No defects
@@ -397,7 +385,6 @@
 415,,Operating hours,25 h
 416,,YOM of winch,2015
 417,198,Checking the service hoist safety catch,1 Done - No defects
-418,No.,Check item,Result
 419,199,Checking the automatic operation of the service hoist,4 Not done - Assembly suspended
 420,200,Checking the steel cable for the service hoist,1 Done - No defects
 421,201,Oiling the steel cable for the service hoist,1 Done - No defects
@@ -431,7 +418,6 @@
 449,226,Visual inspection of machine house,1 Done - No defects
 450,Mechanical system – Rotor head,,
 451,227,Checking the rotor head anchorage points,1 Done - No defects
-452,No.,Check item,Result
 453,228,Taking a front and rear main bearing grease sample,1 Done - No defects
 454,229,Greasing the rear and front rotor bearing,1 Done - No defects
 455,230,Perform a visual inspection of the generator rotor,1 Done - No defects
@@ -465,7 +451,6 @@
 483,257,Check laminate on rotor blade B,1 Done - No defects
 484,258,Check laminate on rotor blade C,1 Done - No defects
 485,259,Check web bonding on rotor blade A,1 Done - No defects
-486,No.,Check item,Result
 487,260,Check web bonding on rotor blade B,1 Done - No defects
 488,261,Check web bonding on rotor blade C,1 Done - No defects
 489,262,Check crescent on rotor blade A,1 Done - No defects
@@ -498,7 +483,6 @@
 516,Mechanical system – finishing steps,,
 517,287,Repair paint,1 Done - No defects
 518,288,Acoustic check of WEC,1 Done - No defects
-519,No.,Check item,Result
 520,Measuring device,,
 521,1000,Type of measuring dev. (install. tester),165
 522,1001,ID number,1003
@@ -506,5 +490,4 @@
 524,1003,Date – month,3
 525,1004,Date – year,2025
 526,Report overview,,
-527,No.,Defect locationDefect type,Report
 528,57,"tower, entrance area - lighting, entrance insidespecial, lighting - illuminant defect",920072792
