@@ -1,0 +1,36 @@
+,no,check_item,result
+1,Serv,ice Inspection Form,
+2,0010,Check ICPE Torque V90-V110 2MW MK10,
+3,0,eSIF,
+4,0.01,0. DMS: 0093-0083 V03,
+5,1,Safety,
+6,1.01,Two persons present.,OK
+7,1.02,Trained in and aware of the contents of the Vestas Corporate OH and S Manual including ‘Working with Hazardous Materials’ and Safety Regulations for Operators and Technicians.,OK
+10,1.03,"Be sure to know the general recommendations regarding the following points: For safety reasons, note the location of the emergency stop buttons. Please refer to documentation “Safety Regulations for Operators and Technicians” of the corresponding turbine platform.",OK
+14,1.04,Locking of rotor/blades.,OK
+15,1.05,Hearing protection.,OK
+16,1.06,Hydraulic tools.,OK
+17,2,Article 16 (6-monthly),
+18,2.01,Check that wind turbine is clean. Check that nocombustible or inflammable material is stored inside the wind turbine.,OK
+20,2.02,L'intérieur de l'aérogénérateur est maintenu propre. L'entreposage à l'intérieur de l'aérogénérateur de matériaux combustibles ou inflammables est interdit.,OK
+23,2.03,Remarks: (as a comment),Not Applicable
+25,3,Article 18 I,
+26,3.01,"Control of all mechanical connections between blade and blade bearing based on relevant platform SII, SIF, SWI.",OK
+29,3.02,Contrôle de l’ensemble des brides de fixations et de la fixation des pales: Contrôle de l’ensemble des brides de fixations entre la pale et le roulement de pale.,OK
+32,3.03,"Control of all mechanical connections between blade bearing and hub based on relevant platform SII, SIF, SWI.",OK
+34,3.04,Contrôle de l’ensemble des brides de fixations entre le moyeu et le roulement de pale.,OK
+36,3.05,"Control of all mechanical connections between hub and Main shaft based on relevant platform SII, SIF, SWI.",Not Applicable
+39,3.06,Contrôle de l’ensemble des brides de fixations entre l’arbre principal et le moyeu,OK
+41,3.07,"Control of all mechanical connections between Yaw ring and Tower top based on relevant platform SII, SIF, SWI.",OK
+43,3.08,Contrôle de l’ensemble des brides de fixations entre la couronne d’orientation et le mât,OK
+45,3.09,Remarks: (as a comment),Not Applicable
+47,4,Article 18 I,
+48,4.01,Visual Control of Tower.,OK
+49,4.02,Contrôle visuel du mât et Contrôle de l’ensemble des brides du mât: Contrôle visuel du mât de l’aérogénérateur,OK
+51,4.03,"Control of all Tower flanges and Foundation mechanical connections based on relevant platform SII, SIF, SWI.",OK
+53,4.04,Contrôle de l’ensemble des brides du mât,OK
+55,4.05,Remarks: (as a comment),Not Applicable
+57,5,Article 18 II - Contrôle visuel (6-month,
+58,5.01,"If under Vestas scope, visual control of blades and external elements for damages like thunder impact.",OK
+60,5.02,"L'exploitant procède à un contrôle visuel des pales et des éléments susceptibles d'être endommagés, notamment par des impacts de foudre.",OK
+63,5.03,"Remarks, precise who made the vestas control (Vestas or another company): (as a comment)",

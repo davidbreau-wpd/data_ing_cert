@@ -85,7 +85,9 @@ class Vestas_Report(_Service_Report):
         if self.metadata is None:
             self.set_metadata()
             
-        return f"{self.metadata['turbine_number']}_vestas_{self.metadata['service_order']}_{self.metadata['reason_for_call_out']}"
+        # Clean filename by replacing spaces and special characters
+        reason_for_call_out = str(self.metadata['reason_for_call_out']).replace(' ', '_').replace('/', '_')
+        return f"{self.metadata['turbine_number']}_vestas_{self.metadata['service_order']}_{reason_for_call_out}"
     def extract_inspection_checklist(self) -> pd.DataFrame:
         """
         Extracts the inspection checklist table from the PDF report.
