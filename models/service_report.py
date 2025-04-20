@@ -298,15 +298,32 @@ class _Service_Report:
 
     def merge_rows_by_capitalization(self, df: pd.DataFrame, new_line: bool = False) -> pd.DataFrame:
         """
-        Merge rows where the first column is empty with the previous row.
-        
+        Description:
+            Merges rows in a DataFrame where the first column is empty with the previous row.
+            This is particularly useful for handling multi-line entries where content spans
+            multiple rows but belongs to a single logical entry.
+
         Args:
-            df (pd.DataFrame): DataFrame to process
-            new_line (bool): If True, adds a newline character between merged texts.
-                           If False, concatenates directly. Default is False.
-        
+            df (pd.DataFrame): The DataFrame to process. Expected to have at least 3 columns
+                             where the first column may contain empty values indicating
+                             continuation rows.
+            new_line (bool, optional): If True, uses newline character to join merged content.
+                                     If False, uses space. Defaults to False.
+
         Returns:
-            pd.DataFrame: DataFrame with merged rows
+            pd.DataFrame: A new DataFrame with merged rows. Each set of related rows is
+                        combined into a single row, with content from columns 1 and 2
+                        concatenated using the specified separator.
+
+        Example:
+            Input DataFrame:
+                0    1         2
+                1    Header    Result1
+                     Cont.     Result2
+            
+            Output DataFrame (new_line=False):
+                0    1                  2
+                1    Header Cont.      Result1 Result2
         """
         result = []
         current_row = None
@@ -315,7 +332,10 @@ class _Service_Report:
             if pd.isna(row[0]) or str(row[0]).strip() == '':
                 if current_row is not None:
                     separator = '\n' if new_line else ' '
+                    # Merge both column 1 (description) and column 2 (result)
                     current_row[1] = f"{current_row[1]}{separator}{row[1]}"
+                    if not pd.isna(row[2]):  # Only merge if there's content
+                        current_row[2] = f"{current_row[2]}{separator}{row[2]}"
             else:
                 if current_row is not None:
                     result.append(current_row)

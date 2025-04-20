@@ -151,20 +151,22 @@ class Vestas_Report(_Service_Report):
 
     def format_table(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Format the inspection table through a cleaning pipeline.
-
-        Steps:
-        1. Filter rows to include only data from 'eSIF' marker onwards
-        2. Standardize column names and formats across the table
-
+        Format the inspection table by applying a series of cleaning operations.
+        
         Args:
-            df (pd.DataFrame): Raw inspection table data extracted from the PDF
-
+            df (pd.DataFrame): Raw inspection table data extracted from PDF
+            
         Returns:
-            pd.DataFrame: Formatted and cleaned inspection table data
+            pd.DataFrame: Cleaned and formatted inspection table with standardized columns
+            
+        The cleaning pipeline includes:
+        - Filtering rows starting from 'eSIF' marker
+        - Merging continuation lines
+        - Standardizing column names and format
         """
         formatting_pipeline = [
             self._filter_inspection_rows,
+            self.merge_continuation_lines,
             super().standardize_columns
         ]
         
