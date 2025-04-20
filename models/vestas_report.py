@@ -29,7 +29,8 @@ class Vestas_Report(_Service_Report):
             'flavor': 'stream',
             'edge_tol': 500,
             'row_tol': 10,
-            'columns': [",".join(str(col) for col in self.columns)]
+            'columns': [",".join(str(col) for col in self.columns)],
+            'table_areas': ['30,740,600,100']
         }
 
     def get_metadata(self) -> dict:
@@ -129,19 +130,45 @@ class Vestas_Report(_Service_Report):
             **inspection_params
         )
 
+    def _filter_inspection_rows(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Filters inspection table rows starting from 'eSIF' marker.
+
+        Args:
+            df (pd.DataFrame): DataFrame containing inspection table data
+
+        Returns:
+            pd.DataFrame: Filtered DataFrame containing only rows from 'eSIF' marker onwards
+
+        Note:
+            If 'eSIF' marker is not found, returns the original DataFrame unchanged
+        """
+        try:
+            start_idx = df[df[1].eq("eSIF")].index[0]
+            return df.loc[start_idx:]
+        except (IndexError, KeyError):
+            return df
+
     def format_table(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Formats the inspection table by applying the cleaning pipeline:
-        1. Merging continuation lines
-        2. Standardizing column names
+        Format the inspection table through a cleaning pipeline.
+
+        Steps:
+        1. Filter rows to include only data from 'eSIF' marker onwards
+        2. Standardize column names and formats across the table
+
+        Args:
+            df (pd.DataFrame): Raw inspection table data extracted from the PDF
+
+        Returns:
+            pd.DataFrame: Formatted and cleaned inspection table data
         """
         formatting_pipeline = [
-            self.merge_continuation_lines,
-            self.standardize_columns
+            self._filter_inspection_rows,
+            super().standardize_columns
         ]
         
         formatted_table = super()._apply_formatting_pipeline(df, formatting_pipeline)
-        
         return formatted_table
        
     def _process_report(self, metadata_output_folder: str, inspection_checklist_output_folder: str):

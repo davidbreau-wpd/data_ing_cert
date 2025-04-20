@@ -1,287 +1,348 @@
 ,no,check_item,result
-1,Serv,ice Inspection Form,
-2,0010,2 Year Service,
-3,0020,Torque works $ST_COVERWIND,
-4,0,eSIF,
-5,0.01,0. DMS: 0042-4218 V30,
-6,1,Prepare for service,
-7,1.01,"Do a check of
+3,0,eSIF,
+4,0.01,0. DMS: 0042-4218 V30,
+5,1,Prepare for service,
+6,1.01,"Do a check of
 the warning log.",OK
-8,1.02,Tightening torque.,OK
-9,2,Functional safety test,
-10,2.01,Tower: Do a test of the emergency stop function from the tower.,OK
-11,2.02,"To do a test of
-the emergency stop buttons in the tower: Do the test of the emergency stop buttons -610-02-S1 for the tower control cabinet.",OK
-13,2.03,"Do the test of
-the emergency stop buttons -610-02-S6A for the tower top in the tower.",OK
-15,2.04,"Do the test of
-the emergency stop buttons -610-02-S6B for the tower top in the tower.",OK
-17,2.05,"Nacelle: Do a test to see if
+7,1.02,Tightening torque.,OK
+8,2,Functional safety test,
+9,2.01,Tower: Do a test of the emergency stop function from the tower.,OK
+10,2.02,"To do a test of
+the emergency stop buttons in the tower: Do the test of",OK
+11,,the emergency stop buttons -610-02-S1 for the tower control cabinet.,
+12,2.03,"Do the test of
+the emergency stop buttons -610-02-S6A for the tower",OK
+13,,top in the tower.,
+14,2.04,"Do the test of
+the emergency stop buttons -610-02-S6B for the tower",OK
+15,,top in the tower.,
+16,2.05,"Nacelle: Do a test to see if
 the emergency stop activates the brake.",OK
-18,2.06,"To do a test of the emergency stop buttons in the nacelle: Do the test of
-the emergency stop buttons -610-02-S3 for the yaw control cabinet.",OK
-20,2.07,"Do the test of
-the emergency stop buttons -610-02-S4 for the main shaft (LSS).",OK
-22,2.08,"Do the test of
-the emergency stop buttons -610-02-S5 for the nacelle control cabinet.",OK
-24,2.09,Do a check of the vibration sensor.,OK
-25,2.10,"Hub and blades: To do a test of
-the emergency stop buttons in the hub: Do the test of
-the emergency stop buttons -135-S1 for the hub control cabinet.",OK
-28,2.11,"Do the test of
+17,2.06,To do a test of the emergency stop buttons in the nacelle: Do the test,OK
+18,,"of
+the emergency stop buttons -610-02-S3 for the yaw control cabinet.",
+19,2.07,"Do the test of
+the emergency stop buttons -610-02-S4 for the main",OK
+20,,shaft (LSS).,
+21,2.08,"Do the test of
+the emergency stop buttons -610-02-S5 for the nacelle",OK
+22,,control cabinet.,
+23,2.09,Do a check of the vibration sensor.,OK
+24,2.10,"Hub and blades: To do a test of
+the emergency stop buttons in the hub:",OK
+25,,"Do the test of
+the emergency stop buttons -135-S1 for the hub control",
+26,,cabinet.,
+27,2.11,"Do the test of
 the emergency stop buttons -135-S2 for the hub I/O box.",OK
-29,3,Safety equipment,
-30,3.01,"Fall arrest equipment (rail): Visually examine the fall protection rail and the ladder for dents, holes, and cracks.",OK
-32,3.02,Examine all the bolts on the fall protection rail.,OK
-33,3.03,Fall arrest equipment (wire): Examine the safety cable.,Not Applicable
-35,3.04,Examine the bottom bracket.,Not Applicable
-37,3.05,"Examine the ladder,
-the cable, and the cable guides.",Not Applicable
-39,3.06,Examine the top bracket.,Not Applicable
-41,4,Rotor,
-42,4.01,Hub: ++05 Hub control cabinet: Do a check of the heating element.,OK
-43,4.02,Visually check the hub control cabinet and the support brackets for loose bolts or cracks in the brackets.,OK
-45,4.03,Do a test of the RCCB in the hub controller.,OK
-46,4.04,Replace the 12 V backup battery in the ++05 hub control cabinet.,Parts not available
-48,4.05,Visually examine the 12 V batteries for leakage.,OK
-49,4.06,"Hub cover: Do a check of
+28,3,Safety equipment,
+29,3.01,Fall arrest equipment (rail): Visually examine the fall protection rail and,OK
+30,,"the ladder for dents, holes, and cracks.",
+31,3.02,Examine all the bolts on the fall protection rail.,OK
+32,3.03,Fall arrest equipment (wire): Examine the safety cable.,
+33,,,Not Applicable
+34,3.04,Examine the bottom bracket.,
+35,,,Not Applicable
+36,3.05,"Examine the ladder,
+the cable, and the cable guides.",
+37,,,Not Applicable
+38,3.06,Examine the top bracket.,
+39,,,Not Applicable
+40,4,Rotor,
+41,4.01,Hub: ++05 Hub control cabinet: Do a check of the heating element.,OK
+42,4.02,Visually check the hub control cabinet and the support brackets for,OK
+43,,loose bolts or cracks in the brackets.,
+44,4.03,Do a test of the RCCB in the hub controller.,OK
+45,4.04,Replace the 12 V backup battery in the ++05 hub control cabinet.,
+46,,,Parts not available
+47,4.05,Visually examine the 12 V batteries for leakage.,OK
+48,4.06,"Hub cover: Do a check of
 the fibreglass connections for loose bolts.",OK
-50,4.07,Examine the nose cone for cracks in the fibreglass around the bolted connections.,OK
-52,4.08,"Blade bearing: Do a check of
+49,4.07,Examine the nose cone for cracks in the fibreglass around the bolted,OK
+50,,connections.,
+51,4.08,"Blade bearing: Do a check of
 the blade bearing seals for leakage.",OK
-53,4.09,"Semi-automatic lubrication system: To check the grease hoses: Do a check of
-the grease hoses for cracks and wear.",OK
-55,4.10,"Do a check of
+52,4.09,Semi-automatic lubrication system: To check the grease hoses: Do a,OK
+53,,"check of
+the grease hoses for cracks and wear.",
+54,4.10,"Do a check of
 the grease hoses and their attachments for tightness.",OK
-56,4.11,"Do a check of the grease distribution block assembly and its attachment
-for tightness.",OK
-58,4.12,"Do a check of
+55,4.11,Do a check of the grease distribution block assembly and its,OK
+56,,"attachment
+for tightness.",
+57,4.12,"Do a check of
 the grease collecting cans.",OK
-59,4.13,Lubricate the blade bearings.,OK
-60,4.14,Blades: Examine the blades.,OK
-61,4.15,"Do a check of
+58,4.13,Lubricate the blade bearings.,OK
+59,4.14,Blades: Examine the blades.,OK
+60,4.15,"Do a check of
 the blade collar.",OK
-62,4.16,"Do an internal
+61,4.16,"Do an internal
 inspection of
 the structural shell blade.",OK
-63,4.17,"Do a check of
+62,4.17,"Do a check of
 the LCTU.",OK
-64,5,Hydraulic systems,
-65,5.01,"Extract a sample of
+63,5,Hydraulic systems,
+64,5.01,"Extract a sample of
 the hydraulic oil.",OK
-66,5.02,"Replace the filter element of
+65,5.02,"Replace the filter element of
 the return line filter.",OK
-67,5.03,Flush the hydraulic system after the filter change.,OK
-68,6,Gearbox and gear oil system,
-69,6.01,"Extract
+66,5.03,Flush the hydraulic system after the filter change.,OK
+67,6,Gearbox and gear oil system,
+68,6.01,"Extract
 the gear oil sample.",OK
-71,6.02,Replace the filter cartridge in the air filter housing.,OK
-72,6.03,Replace the offline filter and the O-rings in the gearbox.,OK
-73,6.04,"To replace the 2 inline 10 ìm gear oil
-filters (filter block HG1270): Replace the 2 inline 10 ìm gear oil
-filters and the O-rings.",OK
-75,6.05,"Visually examine all
-the fittings, components on the filter block, and the pumps for leakage.",OK
-77,6.06,To lubricate the main bearings: Lubricate the main bearing without an automatic grease lubrication system.,OK
-79,6.07,Do a check and adjust the LSS or RPM sensors.,OK
-80,6.08,"To examine the rotor locking pins: Do a visual
+69,6.02,Replace the filter cartridge in the air filter housing.,OK
+70,6.03,Replace the offline filter and the O-rings in the gearbox.,OK
+71,6.04,"To replace the 2 inline 10 ìm gear oil
+filters (filter block HG1270):",OK
+72,,"Replace the 2 inline 10 ìm gear oil
+filters and the O-rings.",
+73,6.05,"Visually examine all
+the fittings, components on the filter block, and the",OK
+74,,pumps for leakage.,
+75,6.06,To lubricate the main bearings: Lubricate the main bearing without an,OK
+76,,automatic grease lubrication system.,
+77,6.07,Do a check and adjust the LSS or RPM sensors.,OK
+78,6.08,"To examine the rotor locking pins: Do a visual
 inspection of
-the rotor locking pins and the rotor lock disc holes for damage.",OK
-82,6.09,Lubricate the rotor locking pins.,OK
-83,7,Generator and coupling,
-84,7.01,Generator: Do a check of the bearings for unusual noise.,OK
-85,7.02,"Do a check of
+the rotor",OK
+79,,locking pins and the rotor lock disc holes for damage.,
+80,6.09,Lubricate the rotor locking pins.,OK
+81,7,Generator and coupling,
+82,7.01,Generator: Do a check of the bearings for unusual noise.,OK
+83,7.02,"Do a check of
 the automatic lubrication system.",OK
-86,7.03,"Do a check to see if
+84,7.03,"Do a check to see if
 the grease return pipe is blocked.",OK
-87,7.04,"Do a check of
+85,7.04,"Do a check of
 the lubrication pump for tightness.",OK
-88,7.05,"Do a check of
+86,7.05,"Do a check of
 the power slip ring system.",OK
-89,7.06,Measure all ground brushes:,OK
-90,7.07,Ground brush # 1:,"92,000
+87,7.06,Measure all ground brushes:,OK
+88,7.07,Ground brush # 1:,"92,000
 mm"
-91,7.08,Ground brush # 2,"92,000
+89,7.08,Ground brush # 2,"92,000
 mm"
-92,7.09,Ground brush # 3,"91,000
+90,7.09,Ground brush # 3,"91,000
 mm"
-94,7.10,Ground brush # 4:,"88,000
+91,7.10,Ground brush # 4:,"88,000
 mm"
-95,7.11,Ground brush # 5:,"93,000
+92,7.11,Ground brush # 5:,"93,000
 mm"
-96,7.12,Ground brush # 6:,"96,000
+93,7.12,Ground brush # 6:,"96,000
 mm"
-97,7.13,"Do a check of the form and function of
+94,7.13,"Do a check of the form and function of
 the ground brushes.",OK
-98,7.14,Identify the power brush type: Mersen,OK
-99,7.15,Identify the power brush type: BGB,Not Applicable
-101,7.16,Measure the most worn power brush:,OK
-102,7.17,Measurement:,"52,500
+95,7.14,Identify the power brush type: Mersen,OK
+96,7.15,Identify the power brush type: BGB,
+97,,,Not Applicable
+98,7.16,Measure the most worn power brush:,OK
+99,7.17,Measurement:,"52,500
 mm"
-103,7.18,"Do a check of
+100,7.18,"Do a check of
 the form and function of
 the power brushes.",OK
-104,7.19,"Identify the slip ring unit
+101,7.19,"Identify the slip ring unit
 type: Mersen",OK
-105,7.20,"Identify the slip ring unit
-type: BGB",Not Applicable
-107,7.21,"Do a check of
+102,7.20,"Identify the slip ring unit
+type: BGB",
+103,,,Not Applicable
+104,7.21,"Do a check of
 the slip ring surfaces.",OK
-108,7.22,Do a check and measure the groove depth for the power brushes.,OK
-109,7.23,Power brush # 1:,"5,400
+105,7.22,Do a check and measure the groove depth for the power brushes.,OK
+106,7.23,Power brush # 1:,"5,400
 mm"
-110,7.24,Power brush # 2:,"5,400
+107,7.24,Power brush # 2:,"5,400
 mm"
-111,7.25,Power brush # 3:,"5,400
+108,7.25,Power brush # 3:,"5,400
 mm"
-112,7.26,"To check the suction fan and the filter for the PSRS: Do a check of
-the suction fan, the filter, and the exhaust hose fitting.",OK
-114,8,Cooling and conditioning,
-115,8.01,"To do a check of
+109,7.26,"To check the suction fan and the filter for the PSRS: Do a check of
+the",OK
+110,,"suction fan, the filter, and the exhaust hose fitting.",
+111,8,Cooling and conditioning,
+112,8.01,"To do a check of
 the liquid cooling system: Do a visual
 inspection of
-the circulation pump -690-02-G1 for leakage in the shaft seal.",OK
-118,8.02,"Do a check of
-the 2 hoses in the front end for incipient cracks, wear, and leakage.",OK
-120,8.03,"Do a check of the 2 hoses in the ILU pipe system for incipient cracks, wear, and leakage.",OK
-122,8.04,"Do a check of
-the 5 hoses in the pump area for incipient cracks, wear, and leakage.",OK
-124,8.05,"Do a check of
-the 2 hoses on column 3 (right-hand side) for incipient cracks, wear, and leakage.",OK
-126,8.06,"Do a check of the 3 hoses for the roof section for incipient cracks, wear, and leakage.",OK
-128,8.07,"Do a check of
-the 2 hoses in the rear end for incipient cracks, wear, and leakage.",OK
-130,8.08,"CoolerTop®: Do a check of
-the CoolerTop® ladder for loose or missing bolts.",OK
-132,8.09,Visually examine the fibreglass for cracks along the leading edge.,OK
-133,8.10,Visually examine the cooler elements on the CoolerTop® for damage through the skylight.,OK
-135,9,Nacelle,
-136,9.01,Safety functions: Examine the parking brake.,OK
-137,9.02,"Do a test of
+the",OK
+113,,circulation pump -690-02-G1 for leakage in the shaft seal.,
+114,8.02,"Do a check of
+the 2 hoses in the front end for incipient cracks, wear,",OK
+115,,and leakage.,
+116,8.03,"Do a check of the 2 hoses in the ILU pipe system for incipient cracks,",OK
+117,,"wear, and leakage.",
+118,8.04,"Do a check of
+the 5 hoses in the pump area for incipient cracks, wear,",OK
+119,,and leakage.,
+120,8.05,"Do a check of
+the 2 hoses on column 3 (right-hand side) for incipient",OK
+121,,"cracks, wear, and leakage.",
+122,8.06,"Do a check of the 3 hoses for the roof section for incipient cracks,",OK
+123,,"wear, and leakage.",
+124,8.07,"Do a check of
+the 2 hoses in the rear end for incipient cracks, wear,",OK
+125,,and leakage.,
+126,8.08,"CoolerTop®: Do a check of
+the CoolerTop® ladder for loose or missing",OK
+127,,bolts.,
+128,8.09,Visually examine the fibreglass for cracks along the leading edge.,OK
+129,8.10,Visually examine the cooler elements on the CoolerTop® for damage,OK
+130,,through the skylight.,
+131,9,Nacelle,
+132,9.01,Safety functions: Examine the parking brake.,OK
+133,9.02,"Do a test of
 the shock sensor.",OK
-138,9.03,"Nacelle controller cabinets: To do a check of
-the ++03 CON A controller section: Do a test of
-the heating element.",OK
-140,9.04,Do a test of the safety system batteries.,OK
-141,9.05,"Do a check of
+134,9.03,"Nacelle controller cabinets: To do a check of
+the ++03 CON A",OK
+135,,"controller section: Do a test of
+the heating element.",
+136,9.04,Do a test of the safety system batteries.,OK
+137,9.05,"Do a check of
 the fan and the air filters.",OK
-143,9.06,"To do a check of
+138,9.06,"To do a check of
 the ++53 CON B controller section: Do a test of
-the heating element.",OK
-145,9.07,"Do a check of
+the",OK
+139,,heating element.,
+140,9.07,"Do a check of
 the fan and the air filters.",OK
-146,9.08,Replace the safety system batteries.,Notification faite
-148,9.09,"To do a check of
+141,9.08,Replace the safety system batteries.,Notification faite
+142,,,Parts not available
+143,9.09,"To do a check of
 the ++04++3 busbar cabinet: Do a test of
-the heating element.",OK
-150,9.10,"Do a check of
+the heating",OK
+144,,element.,
+145,9.10,"Do a check of
 the fan and the air filters.",OK
-151,9.11,"Do a test of the main circuit breakers (-405-04-F1, -400-04-F1, and -660-02-F2).",OK
-153,9.12,"To do a check of the ++04++1 VCS converter cabinet: Do a test of
-the heating element.",OK
-155,9.13,Do a check of the air filter.,OK
-156,9.14,"Rotating transfer unit: To do a check of
-the slip ring unit (BGB): Visually examine the slip ring unit
-for burns and excessive dust.",OK
-158,9.15,"Do a visual check of
+146,9.11,"Do a test of the main circuit breakers (-405-04-F1, -400-04-F1, and",OK
+147,,-660-02-F2).,
+148,9.12,"To do a check of the ++04++1 VCS converter cabinet: Do a test of
+the",OK
+149,,heating element.,
+150,9.13,Do a check of the air filter.,OK
+151,9.14,"Rotating transfer unit: To do a check of
+the slip ring unit (BGB): Visually",OK
+152,,"examine the slip ring unit
+for burns and excessive dust.",
+153,9.15,"Do a visual check of
 the brushes for burns and wear.",OK
-159,9.16,"To do a check of
-the slip ring unit (REKOFA): Visually examine the slip ring unit
-for burns and excessive dust.",Not Applicable
-162,9.17,"Do a visual check of
+154,9.16,"To do a check of
+the slip ring unit (REKOFA): Visually examine the slip",
+155,,"ring unit
+for burns and excessive dust.",
+156,,,Not Applicable
+157,9.17,"Do a visual check of
 the brushes for burns and wear.",OK
-163,9.18,Wind sensor: Clean the wind sensor.,OK
-164,9.19,Visually examine the cables for damage and wear.,OK
-165,9.20,"Examine all
+158,9.18,Wind sensor: Clean the wind sensor.,OK
+159,9.19,Visually examine the cables for damage and wear.,OK
+160,9.20,"Examine all
 the wind sensor equipment,
-the brackets, and the masts for severe damage.",OK
-167,9.21,"Do a check of all the wind sensor equipment, the brackets, and the masts for tightness.",OK
-170,10,Yaw system,
-171,10.01,Yaw bearing system: Measure the radial backlash.,OK
-172,10.02,Claw beam number 1: CW end:,"0,050"
-173,10.03,Claw beam number 1: CCW end:,"0,050"
-174,10.04,Claw beam number 2: CW end:,"0,050"
-175,10.05,Claw beam number 2: CCW end:,"0,050"
-176,10.06,Claw beam number 3: CW end:,"0,000"
-177,10.07,Claw beam number 3: CCW end:,"0,000"
-178,10.08,Claw beam number 4: CW end:,"0,000"
-179,10.09,Claw beam number 4: CCW end:,"0,000"
-180,10.10,Claw beam number 5: CW end:,"0,050"
-181,10.11,Claw beam number 5: CCW end:,"0,000"
-182,10.12,Claw beam number 6: CW end:,"0,000"
-183,10.13,Claw beam number 6: CCW end:,"0,050"
-184,10.14,Claw beam number 7: CW end:,"0,000"
-185,10.15,Claw beam number 7: CCW end:,"0,050"
-186,10.16,Claw beam number 8: CW end:,"0,000"
-187,10.17,Claw beam number 8: CCW end:,"0,000"
-188,10.18,Claw beam number 9: CW end:,"0,050"
-190,10.19,Claw beam number 9: CCW end:,"0,050"
-191,10.20,Claw beam number 10: CW end:,"0,050"
-192,10.21,Claw beam number 10: CCW end:,"0,000"
-193,10.22,Claw beam number 11: CW end:,"0,050"
-194,10.23,Claw beam number 11: CCW end:,"0,000"
-195,10.24,Sum: CW end:,"0,027"
-196,10.25,Sum: CCW end:,"0,022"
-197,10.26,"Do a check of
-the bolts for the end-stop (brass or aluminium piece) for the radial slide plates.",OK
-199,10.27,Yaw lubrication system: Manually lubricate the yaw sliding surface.,OK
-200,11,Service crane,
-201,11.01,Examine the service crane.,OK
-202,12,High voltage,
-203,12.01,"Do an inspection of
+the brackets, and the masts",OK
+161,,for severe damage.,
+162,9.21,"Do a check of all the wind sensor equipment, the brackets, and the",OK
+163,,masts for tightness.,
+164,10,Yaw system,
+165,10.01,Yaw bearing system: Measure the radial backlash.,OK
+166,10.02,Claw beam number 1: CW end:,"0,050"
+167,10.03,Claw beam number 1: CCW end:,"0,050"
+168,10.04,Claw beam number 2: CW end:,"0,050"
+169,10.05,Claw beam number 2: CCW end:,"0,050"
+170,10.06,Claw beam number 3: CW end:,"0,000"
+171,10.07,Claw beam number 3: CCW end:,"0,000"
+172,10.08,Claw beam number 4: CW end:,"0,000"
+173,10.09,Claw beam number 4: CCW end:,"0,000"
+174,10.10,Claw beam number 5: CW end:,"0,050"
+175,10.11,Claw beam number 5: CCW end:,"0,000"
+176,10.12,Claw beam number 6: CW end:,"0,000"
+177,10.13,Claw beam number 6: CCW end:,"0,050"
+178,10.14,Claw beam number 7: CW end:,"0,000"
+179,10.15,Claw beam number 7: CCW end:,"0,050"
+180,10.16,Claw beam number 8: CW end:,"0,000"
+181,10.17,Claw beam number 8: CCW end:,"0,000"
+182,10.18,Claw beam number 9: CW end:,"0,050"
+183,10.19,Claw beam number 9: CCW end:,"0,050"
+184,10.20,Claw beam number 10: CW end:,"0,050"
+185,10.21,Claw beam number 10: CCW end:,"0,000"
+186,10.22,Claw beam number 11: CW end:,"0,050"
+187,10.23,Claw beam number 11: CCW end:,"0,000"
+188,10.24,Sum: CW end:,"0,027"
+189,10.25,Sum: CCW end:,"0,022"
+190,10.26,"Do a check of
+the bolts for the end-stop (brass or aluminium piece) for",OK
+191,,the radial slide plates.,
+192,10.27,Yaw lubrication system: Manually lubricate the yaw sliding surface.,OK
+193,11,Service crane,
+194,11.01,Examine the service crane.,OK
+195,12,High voltage,
+196,12.01,"Do an inspection of
 the transformer,
-the transformer room, and the HV switchgear.",Service 2Y
-205,13,Service lift and climb assistance,
-206,13.01,"Do a check of
-the service lift and the climb assistance according to the supplier’s user manual.",OK
-208,14,Tower,
-209,14.01,"To do a visual
+the transformer room, and the HV",Service 2Y
+197,,switchgear.,
+198,13,Service lift and climb assistance,
+199,13.01,"Do a check of
+the service lift and the climb assistance according to the",OK
+200,,supplier’s user manual.,
+201,14,Tower,
+202,14.01,"To do a visual
 inspection of
-the middle section liquid damper (optional): Do a visual
+the middle section liquid damper (optional):",
+203,,"Do a visual
 inspection of
 the liquid level
-in the barrels.","235
-59033"
-212,14.02,"Do a visual
-inspection of the barrels for liquid leakage.",Not Applicable
-214,14.03,"Do a visual
+in the barrels.",
+204,,,Not Applicable
+205,14.02,"Do a visual
+inspection of the barrels for liquid leakage.",
+206,,,Not Applicable
+207,14.03,"Do a visual
 inspection of
 the mechanical components of
-the damper units and wires.",Not Applicable
-217,14.04,"++06 UPS cabinet: Do a check of the settings of
-the timers and the temperature control devices according to the relay setting document. See 0061-1789 ’Relay setting for V100/V110 2,2 MW VCS/VCSS Mk 10D’.",OK
-221,14.05,"Do a check of
+the damper",
+208,,units and wires.,
+209,,,Not Applicable
+210,14.04,"++06 UPS cabinet: Do a check of the settings of
+the timers and the",OK
+211,,temperature control devices according to the relay setting document.,
+212,,"See 0061-1789 ’Relay setting for V100/V110 2,2 MW VCS/VCSS Mk",
+213,,10D’.,
+214,14.05,"Do a check of
 the MCBs.",OK
-222,14.06,Visually examine the UPS battery cartridges and the UPS battery packs for leakage.,OK
-224,14.07,"To do a test of
+215,14.06,Visually examine the UPS battery cartridges and the UPS battery packs,OK
+216,,for leakage.,
+217,14.07,"To do a test of
 the UPS batteries: Do a test of
 the UPS batteries.",OK
-225,14.08,"Replace the UPS batteries,
-if necessary. Date (as a comment)",Not Applicable
-227,14.09,"Replace the UPS,
-if necessary. Date (as a comment).",Not Applicable
-229,14.10,"Do a check of
+218,14.08,"Replace the UPS batteries,
+if necessary. Date (as a comment)",
+219,,,Not Applicable
+220,14.09,"Replace the UPS,
+if necessary. Date (as a comment).",
+221,,,Not Applicable
+222,14.10,"Do a check of
 the heating elements.",OK
-230,14.11,Examine the fan.,OK
-231,14.12,"Do a check of
+223,14.11,Examine the fan.,OK
+224,14.12,"Do a check of
 the air filters in the UPS cabinet.",OK
-232,14.13,"++01 Ground control cabinet: Do a test of all processor backup batteries in all
-the cabinets.",OK
-234,14.14,"Examine if
+225,14.13,++01 Ground control cabinet: Do a test of all processor backup,OK
+226,,"batteries in all
+the cabinets.",
+227,14.14,"Examine if
 the heating elements are activated.",OK
-235,14.15,"Do a test of
-the ++01-300-F1, ++01-660-12-F10, and ++01-660-10-F11 RCBOs and RCCBs.",OK
-237,14.16,Do a check of the contactor switching counter for contactors -695-02-Q1 and -695-04-Q1 for number of switching.,OK
-239,14.17,Number of switching:,Not Applicable
-241,14.18,++51 Light box: Examine the RCCB ++51-640-02-03-F1 inside the ++51 light system control panel.,OK
-243,14.19,Visually examine the 12 V batteries for leakage.,OK
-244,14.20,"Examine the function of
+228,14.15,"Do a test of
+the ++01-300-F1, ++01-660-12-F10, and ++01-660-10-F11",OK
+229,,RCBOs and RCCBs.,
+230,14.16,Do a check of the contactor switching counter for contactors,OK
+231,,-695-02-Q1 and -695-04-Q1 for number of switching.,
+232,14.17,Number of switching:,
+233,,,Not Applicable
+234,14.18,++51 Light box: Examine the RCCB ++51-640-02-03-F1 inside the,OK
+235,,++51 light system control panel.,
+236,14.19,Visually examine the 12 V batteries for leakage.,OK
+237,14.20,"Examine the function of
 the emergency light and the 12 V batteries.",OK
-245,14.21,"Do a check of
+238,14.21,"Do a check of
 the air filter in the light box cabinet.",OK
-246,15,Finish work,
-247,15.01,"Clean the cabinets,
-the covers, and the other surfaces for grease spots and finger marks.",OK
-249,15.02,Clean grease from the checker plates and the other surfaces.,OK
-250,15.03,Remove the collected grease from the yaw top teeth.,OK
-251,15.04,Clean the tower basement and tower from inside.,OK
+239,15,Finish work,
+240,15.01,"Clean the cabinets,
+the covers, and the other surfaces for grease spots",OK
+241,,and finger marks.,
+242,15.02,Clean grease from the checker plates and the other surfaces.,OK
+243,15.03,Remove the collected grease from the yaw top teeth.,OK
+244,15.04,Clean the tower basement and tower from inside.,OK
