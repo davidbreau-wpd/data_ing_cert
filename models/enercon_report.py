@@ -237,18 +237,13 @@ class Enercon_Report(_Service_Report):
         self.metadata_df = self.get_metadata()
         return self.metadata_df
 
-    def extract_inspection_checklist(self) -> pd.DataFrame:
+    def extract_inspection_checklist(self) -> tuple:
         """
         Extracts the raw inspection table from the Enercon report.
-
-        This method retrieves the inspection checklist table from the PDF report using
-        the default Camelot parameters defined in self.camelot_params.
-
+        
         Returns:
-            pd.DataFrame: Raw inspection table containing:
-                - Inspection items and their details
-                - Unprocessed data that requires further formatting
-                - All pages of the inspection checklist combined
+            tuple: (pandas DataFrame, camelot Table) containing the extracted data
+                  and the original camelot table for coordinate access
         """
         with fitz.open(self.file_path) as doc:
             total_pages = len(doc)
@@ -256,52 +251,114 @@ class Enercon_Report(_Service_Report):
         inspection_params = {
             **self.camelot_params
         }
-    
-        return self._get_multiple_pages_table(
-            starting_page_number=2,
-            ending_page_number=total_pages,
+        
+        # Extract tables with camelot
+        tables = camelot.read_pdf(
+            self.file_path,
+            pages=f"2-{total_pages}",
             **inspection_params
         )
-
+        
+        # Convert to pandas DataFrame for processing
+        df = pd.concat([self._convert_to_dataframe(table) for table in tables], ignore_index=True)
+        
+        # Return both the DataFrame and the original camelot tables
+        return df, tables
+    
     def _filter_inspection_rows(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         This method extracts the relevant inspection data by:
         1. Finding the row after the 'Details' header
         2. Finding the row before the 'Signature' section
-        3. Returning only rows between these boundaries
-
-        Args:
-            df (pd.DataFrame): Input DataFrame containing the inspection table
-
-        Returns:
-            pd.DataFrame: Filtered DataFrame containing only inspection data rows
+        3. Removing header rows with "No."
         """
-        # First get rows between Details and Signature
-        filtered_df = df.loc[df[0].eq("Details").idxmax() + 1:df[0].str.contains("Signature", na=False).idxmax() - 1]
+        try:
+            # Get start index (after "Details")
+            start_idx = df[df[0].eq("Details")].index[0] + 1
+            
+            # Get end index (before "Signature")
+            end_idx = df[df[0].str.contains("Signature", na=False)].index[0]
+            
+            # Filter rows between start and end, excluding "No." rows
+            filtered_df = df.loc[start_idx:end_idx - 1]
+            return filtered_df[~filtered_df[0].eq("No.")]
+            
+        except (IndexError, KeyError):
+            return df
+
+    def _extract_report_overview(self, df: pd.DataFrame, camelot_tables) -> pd.DataFrame:
+        """
+        Extract and format the Report Overview section using new coordinates
         
-        # Then remove any remaining header rows
-        return filtered_df[~filtered_df[0].eq("No.")]
-
-    def format_table(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Formats the inspection table by applying the cleaning pipeline:
-        1. Filtering relevant rows
-        2. Standardizing column names
-
         Args:
-            df (pd.DataFrame): Input DataFrame containing the raw inspection table
-
-        Returns:
-            pd.DataFrame: Formatted inspection table with filtered rows and standardized columns
+            df: pandas DataFrame with inspection data
+            camelot_tables: original camelot tables with coordinate information
         """
+        try:
+            # Find the row index in our pandas DataFrame
+            overview_row = df[df[0].str.contains("Report Overview", na=False)].index[0]
+            
+            # Find which table contains this row
+            row_count = 0
+            table_idx = 0
+            table_row = 0
+            
+            for i, table in enumerate(camelot_tables):
+                table_df = self._convert_to_dataframe(table)
+                if row_count + len(table_df) > overview_row:
+                    table_idx = i
+                    table_row = overview_row - row_count
+                    break
+                row_count += len(table_df)
+            
+            # Get y-coordinate from the identified table
+            y_coordinate = camelot_tables[table_idx].cells[table_row][0][1]
+            
+            # New extraction parameters for Report Overview
+            overview_params = {
+                'flavor': 'stream',
+                'columns': ['58,285,470'],
+                'table_areas': [f'20,{y_coordinate},600,40'],
+                'edge_tol': 500,
+                'row_tol': 10
+            }
+            
+            # Extract overview table
+            overview_table = camelot.read_pdf(self.file_path, **overview_params)[0]
+            overview_df = self._convert_to_dataframe(overview_table)
+            overview_df.columns = ['no', 'check_item', 'result']
+            
+            return overview_df.dropna(how='all')
+            
+        except (IndexError, KeyError):
+            return pd.DataFrame(columns=['no', 'check_item', 'result'])
+
+    def format_table(self, df_tuple) -> pd.DataFrame:
+        """Format the inspection table by applying cleaning pipeline."""
+        # Unpack the tuple
+        df, camelot_tables = df_tuple if isinstance(df_tuple, tuple) else (df_tuple, None)
+        
+        # Format main checklist
         formatting_pipeline = [
             self._filter_inspection_rows,
             super().standardize_columns,
             lambda x: self.merge_rows_by_capitalization(x, new_line=True)
         ]
-        
         formatted_table = super()._apply_formatting_pipeline(df, formatting_pipeline)
-        return formatted_table
+        
+        # Find where to cut the main checklist
+        try:
+            overview_start = formatted_table[formatted_table['no'].str.contains("Report Overview", na=False)].index[0]
+            main_checklist = formatted_table.loc[:overview_start-1]
+        except (IndexError, KeyError):
+            main_checklist = formatted_table
+            
+        # Get and format overview section if we have camelot tables
+        if camelot_tables is not None:
+            overview_section = self._extract_report_overview(df, camelot_tables)
+            return pd.concat([main_checklist, overview_section], ignore_index=True)
+        else:
+            return formatted_table
 
     def visualize_extraction_parameters(self, page_number: int, **kwargs):
         """

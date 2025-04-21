@@ -1,23 +1,23 @@
 ,no,check_item,result
-18,Tower base,,
-19,1,Carrying out a visual inspection of the tower base,1 Done - No defects
-20,2,Checking RCD tower base,1 Done - No defects
-21,Tower,,
-22,3,Visually inspecting the tower,1 Done - No defects
-23,Machine house,,
-24,4,Checking the machine house first aid kit,1 Done - No defects
-25,5,Checking the fire extinguisher in the machine house,1 Done - No defects
-26,6,Checking RCD machine house,1 Done - No defects
-27,7,Checking the yaw bearing,1 Done - No defects
-29,8,Visual inspection of machine house,1 Done - No defects
-30,Rotor head,,
-31,9,Checking rotor head seals,1 Done - No defects
-32,10,Grease rotor head bearings,1 Done - No defects
-33,11,Checking blade flange bearings,1 Done - No defects
-34,12,Visual inspection of rotor head,1 Done - No defects
-35,Nacelle exterior,,
-36,13,Inspecting rotor blade exterior,2 Done - Defects detected
-37,Finishing steps,,
-38,14,Acoustic check of WEC,1 Done - No defects
-39,Report overview,,
-41,13,"Erosion - Bladecoat porous, flaking Blade tip - Blade tip20-50mm",92003987
+0,Tower base,,
+1,1,Carrying out a visual inspection of the tower base,1 Done - No defects
+2,2,Checking RCD tower base,1 Done - No defects
+3,Tower,,
+4,3,Visually inspecting the tower,1 Done - No defects
+5,Machine house,,
+6,4,Checking the machine house first aid kit,1 Done - No defects
+7,5,Checking the fire extinguisher in the machine house,1 Done - No defects
+8,6,Checking RCD machine house,1 Done - No defects
+9,7,Checking the yaw bearing,1 Done - No defects
+10,8,Visual inspection of machine house,1 Done - No defects
+11,Rotor head,,
+12,9,Checking rotor head seals,1 Done - No defects
+13,10,Grease rotor head bearings,1 Done - No defects
+14,11,Checking blade flange bearings,1 Done - No defects
+15,12,Visual inspection of rotor head,1 Done - No defects
+16,Nacelle exterior,,
+17,13,Inspecting rotor blade exterior,2 Done - Defects detected
+18,Finishing steps,,
+19,14,Acoustic check of WEC,1 Done - No defects
+20,Report overview,,
+21,13,"Erosion - Bladecoat porous, flaking Blade tip - Blade tip20-50mm",92003987
