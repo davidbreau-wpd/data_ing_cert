@@ -346,4 +346,12 @@ class _Service_Report:
             
         return pd.DataFrame(result)
 
+    def _merge_dataframes(self, main_df: pd.DataFrame, overview_df: pd.DataFrame, columns_to_keep: list[int] = None) -> pd.DataFrame:
+        """Merge main checklist with overview section, keeping only specified columns"""
+        if columns_to_keep is not None:
+            # Select only the specified columns from overview_df
+            overview_df = overview_df.iloc[:, columns_to_keep]
+        
+        return pd.concat([main_df, overview_df], ignore_index=True)
+
 

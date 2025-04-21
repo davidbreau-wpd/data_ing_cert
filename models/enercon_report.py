@@ -286,79 +286,102 @@ class Enercon_Report(_Service_Report):
         except (IndexError, KeyError):
             return df
 
-    def _extract_report_overview(self, df: pd.DataFrame, camelot_tables) -> pd.DataFrame:
+    def _check_and_get_overview(self, df: pd.DataFrame, camelot_tables) -> tuple[pd.DataFrame, pd.DataFrame] | None:
         """
-        Extract and format the Report Overview section using new coordinates
+        Check if Report Overview exists and extract it if needed.
+        Returns tuple of (main_df_without_overview, overview_df) if overview exists, None otherwise
+        """
+        overview_mask = df[0].str.contains("Report overview", na=False, case=False)
+        if overview_mask.any():
+            overview_index = overview_mask[overview_mask].index[0]
+            # Split the dataframe after "Report Overview"
+            main_df = df.iloc[:overview_index + 1].copy()  # Include "Report Overview" row
+            return (main_df, self._extract_report_overview(df, camelot_tables))
+        return None
+
+    def extract_inspection_checklist(self) -> pd.DataFrame:
+        """Extracts the complete inspection checklist including overview if present"""
+        with fitz.open(self.file_path) as doc:
+            total_pages = len(doc)
+    
+        # Extract main tables with camelot
+        tables = camelot.read_pdf(
+            self.file_path,
+            pages=f"2-{total_pages}",
+            **self.camelot_params
+        )
         
-        Args:
-            df: pandas DataFrame with inspection data
-            camelot_tables: original camelot tables with coordinate information
-        """
+        # Convert main tables to DataFrame
+        main_df = pd.concat([self._convert_to_dataframe(table) for table in tables], ignore_index=True)
+        
+        # Check and get overview section if needed
+        result = self._check_and_get_overview(main_df, tables)
+        
+        # Merge if overview exists
+        if result is not None:
+            main_df_clean, overview_df = result
+            main_df = super()._merge_dataframes(main_df_clean, overview_df, columns_to_keep=[0, 1, 2])
+        
+        return main_df
+
+    def _extract_report_overview(self, df: pd.DataFrame, camelot_tables) -> pd.DataFrame:
+        """Extract and format the Report Overview section"""
         try:
-            # Find the row index in our pandas DataFrame
-            overview_row = df[df[0].str.contains("Report Overview", na=False)].index[0]
+            # Find "Report Overview" row
+            overview_row = df[df[0].str.contains("Report overview", na=False, case=False)].index[0]
             
-            # Find which table contains this row
+            # Find which table and page contains "Report Overview"
             row_count = 0
-            table_idx = 0
-            table_row = 0
-            
             for i, table in enumerate(camelot_tables):
                 table_df = self._convert_to_dataframe(table)
                 if row_count + len(table_df) > overview_row:
-                    table_idx = i
-                    table_row = overview_row - row_count
+                    overview_page = i + 2  # +2 car camelot commence à la page 2
+                    relative_row = overview_row - row_count
+                    # Get y coordinate where to start extraction
+                    y_coord = table.cells[relative_row][0].y1
                     break
                 row_count += len(table_df)
             
-            # Get y-coordinate from the identified table
-            y_coordinate = camelot_tables[table_idx].cells[table_row][0][1]
+            # Extract overview tables from multiple pages
+            overview_dfs = []
             
-            # New extraction parameters for Report Overview
-            overview_params = {
+            # First page: extract from Report Overview position
+            first_params = {
                 'flavor': 'stream',
                 'columns': ['58,285,470'],
-                'table_areas': [f'20,{y_coordinate},600,40'],
+                'table_areas': [f'20,{y_coord},600,40'],  # De y_coord jusqu'à 40 (bas de page)
+                'pages': str(overview_page),
                 'edge_tol': 500,
                 'row_tol': 10
             }
+            first_table = camelot.read_pdf(self.file_path, **first_params)
+            overview_dfs.extend(self._convert_to_dataframe(table) for table in first_table)
             
-            # Extract overview table
-            overview_table = camelot.read_pdf(self.file_path, **overview_params)[0]
-            overview_df = self._convert_to_dataframe(overview_table)
-            overview_df.columns = ['no', 'check_item', 'result']
+            # Following pages if needed
+            if overview_page < len(camelot_tables) + 1:
+                following_params = {
+                    **self.camelot_params,  # Use default params for full page extraction
+                    'columns': ['58,285,470'],  # Keep the specific columns
+                    'pages': f"{overview_page + 1}-{len(camelot_tables) + 1}"
+                }
+                following_tables = camelot.read_pdf(self.file_path, **following_params)
+                overview_dfs.extend(self._convert_to_dataframe(table) for table in following_tables)
             
+            # Combine and clean
+            overview_df = pd.concat(overview_dfs, ignore_index=True)
             return overview_df.dropna(how='all')
             
         except (IndexError, KeyError):
-            return pd.DataFrame(columns=['no', 'check_item', 'result'])
+            return pd.DataFrame()
 
-    def format_table(self, df_tuple) -> pd.DataFrame:
+    def format_table(self, df: pd.DataFrame) -> pd.DataFrame:
         """Format the inspection table by applying cleaning pipeline."""
-        # Unpack the tuple
-        df, camelot_tables = df_tuple if isinstance(df_tuple, tuple) else (df_tuple, None)
-        
-        # Format main checklist
         formatting_pipeline = [
             self._filter_inspection_rows,
             super().standardize_columns,
             lambda x: self.merge_rows_by_capitalization(x, new_line=True)
         ]
-        formatted_table = super()._apply_formatting_pipeline(df, formatting_pipeline)
-        
-        # Find where to cut the main checklist
-        try:
-            overview_start = formatted_table[formatted_table['no'].str.contains("Report Overview", na=False)].index[0]
-            main_checklist = formatted_table.loc[:overview_start-1]
-        except (IndexError, KeyError):
-            main_checklist = formatted_table
-            
-        # Get and format overview section if we have camelot tables
-        if camelot_tables is not None:
-            overview_section = self._extract_report_overview(df, camelot_tables)
-            return pd.concat([main_checklist, overview_section], ignore_index=True)
-        else:
-            return formatted_table
+        return super()._apply_formatting_pipeline(df, formatting_pipeline)
 
     def visualize_extraction_parameters(self, page_number: int, **kwargs):
         """
