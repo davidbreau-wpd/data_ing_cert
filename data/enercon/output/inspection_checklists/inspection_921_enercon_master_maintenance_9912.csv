@@ -1,0 +1,314 @@
+,no,check_item,result
+21,Electrical system – Tower base,,
+22,1,Check tower base warning systems,1 Done - No defects
+23,2,Check software level,2 Done - Defects detected
+24,3,Check access control,3 Not done - Not necessary
+25,4,Testing ice detection system,1 Done - No defects
+26,5,Check function of Labkotec ice detection system,3 Not done - Not necessary
+28,6,Measuring blade heating system currents on tower base,3 Not done - Not necessary
+29,7,Checking smoke detection system,3 Not done - Not necessary
+30,Electrics - External transformer station,,
+31,8,Check cooling system of external transformer station transformer,3 Not done - Not necessary
+32,9,Check external transformer station transformer room,3 Not done - Not necessary
+33,10,Check ENERCON transformer protection on external transformer station,3 Not done - Not necessary
+34,11,Perform visual inspection of transformer in external transformer station,3 Not done - Not necessary
+35,12,Take oil sample from external transformer station,3 Not done - Not necessary
+36,13,Check external transformer station’s mediumvoltage switchgear,3 Not done - Not necessary
+37,14,Check HV HRC fuse on external transformer station,3 Not done - Not necessary
+38,15,Checking torques on low-voltage distribution system external station,3 Not done - Not necessary
+39,16,Check external transformer station’s low-voltage distribution system,3 Not done - Not necessary
+40,17,Check external transformer station basement,3 Not done - Not necessary
+41,Electrics - WEC medium voltage area,,
+42,18,Checking the ENERCON transformer protection system,1 Done - No defects
+43,19,Checking the smoke detectors in the transformer room,3 Not done - Not necessary
+44,20,Checking the transformer room,1 Done - No defects
+45,21,Visually inspect the transformer,1 Done - No defects
+46,22,Taking and oil sample,3 Not done - Not necessary
+47,23,Checking medium-voltage switchgear,1 Done - No defects
+48,24,Checking HV HRC fuses,3 Not done - Not necessary
+49,25,Checking torques on low-voltage distribution system,3 Not done - Not necessary
+50,26,Checking the low-voltage distribution system,1 Done - No defects
+51,27,First inspection of tensioning basement,3 Not done - Not necessary
+52,28,Checking the foundation basement,1 Done - No defects
+53,29,Checking AC busbar system V3,1 Done - No defects
+54,Electrical system – Tower base,,
+55,30,Checking fan housing air filter,3 Not done - Not necessary
+56,31,Check the tower base earthing system,1 Done - No defects
+57,32,Check tower base electrical cabinets,1 Done - No defects
+59,33,Check electrical cabinet overvoltage limitation on tower base,1 Done - No defects
+60,34,Checking DC distribution system,1 Done - No defects
+61,35,Checking the SCADA interface backup battery,1 Done - No defects
+62,Electrics - External transformer station,,
+63,36,Check RCD and lighting on external transformer station,3 Not done - Not necessary
+64,Electrical system – Tower base,,
+65,37,Checking the tower cooling system,1 Done - No defects
+66,38,Checking the UPS,1 Done - No defects
+67,39,Check RCD and emergency lights in tower base,2 Done - Defects detected
+68,40,Checking upstream RCD,1 Done - No defects
+69,41,Checking the LV earth fault detection system current sensor,1 Done - No defects
+70,42,Checking the RCD and emergency lighting system for the service hoist,1 Done - No defects
+71,Electrics - Tower,,
+72,43,"Checking and measuring the flexible power cables
+Measured values for item 43
+reduction factor fR","1 Done - No defects
+
+0.98"
+75,Electrical system – Machine house,,
+76,44,Check warning systems for nacelle,1 Done - No defects
+77,45,Checking the horns,1 Done - No defects
+78,46,Checking the telephone connection,1 Done - No defects
+79,47,Performing an electrical test for the nacelle crane,1 Done - No defects
+80,48,Check RCD and emergency lights on machine house,1 Done - No defects
+81,49,Checking the yaw drives,1 Done - No defects
+82,50,Checking smoke detector in machine house,1 Done - No defects
+83,51,Check earthing system on machine house,1 Done - No defects
+84,52,Check electrical cabinets on machine house,1 Done - No defects
+85,53,Checking generator filter cabinet,1 Done - No defects
+86,54,Check electrical cabinet overvoltage limitation on machine house,1 Done - No defects
+87,55,Check torque monitoring system on machine house,1 Done - No defects
+88,Electrics - Rotor head,,
+89,56,Check earthing system on rotor head,1 Done - No defects
+90,57,Check rotor head electrical cabinets,2 Done - Defects detected
+91,58,Checking the pitch transformer box,1 Done - No defects
+93,59,Check electrical cabinet overvoltage limitation on rotor head,1 Done - No defects
+94,60,Check RCD and emergency lights in rotor head,1 Done - No defects
+95,61,Checking the Cobham slip ring unit and Label slip ring unit,3 Not done - Not necessary
+96,62,Checking the ENERCON slip ring unit,1 Done - No defects
+97,63,Checking the bearing seal on the ENERCON,2 Done - Defects detected
+98,64,Checking the torque support and drive mechanism,1 Done - No defects
+99,65,Checking the generator,1 Done - No defects
+100,66,Checking rotor monitoring system,1 Done - No defects
+101,67,Checking rotor head noise sensor,1 Done - No defects
+102,68,Checking the air gap switch,1 Done - No defects
+103,69,Checking rotor blade A’s limit switch,1 Done - No defects
+104,70,Checking rotor blade B’s limit switch,1 Done - No defects
+105,71,Checking rotor blade C’s limit switch,1 Done - No defects
+106,72,Checking the rotor head discharge box,1 Done - No defects
+107,73,Checking discharge box of rotor blade A,1 Done - No defects
+108,74,Checking discharge box of rotor blade B,1 Done - No defects
+109,75,Checking discharge box of rotor blade C,1 Done - No defects
+110,76,"Checking blade heating, rotor blade A",3 Not done - Not necessary
+111,77,"Checking blade heating, rotor blade B",3 Not done - Not necessary
+112,78,"Checking blade heating, rotor blade C",3 Not done - Not necessary
+113,Electrical - components outside nacelle,,
+114,79,Check precipitation sensor,1 Done - No defects
+115,Electrical system – Machine house,,
+116,80,Checking the rectifier earth fault monitoring system,1 Done - No defects
+117,81,Checking generator residual current monitoring,1 Done - No defects
+118,Electrical system – emergency shutdowns,,
+119,82,Checking the nacelle control cabinet EMERGENCY STOP buttons,1 Done - No defects
+120,83,Testing the control cabinet EMERGENCY STOP button,1 Done - No defects
+121,84,Testing the tower entrance door EMERGENCY STOP button,1 Done - No defects
+122,85,Testing the E-module EMERGENCY STOP button,1 Done - No defects
+123,86,Checking the main safety circuit relay K4 emergency shutdown,1 Done - No defects
+124,87,Checking emergency shutdown MSC relay K3,1 Done - No defects
+126,88,Checking the rotor lock emergency shutdown,1 Done - No defects
+127,89,Checking the vibration sensor emergency shutdown,1 Done - No defects
+128,Electrical system – Machine house,,
+129,90,Check resistances in the heating element of the blade heating system,3 Not done - Not necessary
+130,Electrics-country-specif. maint. items,,
+131,91,Check low-voltage distribution system terminal lugs annually,3 Not done - Not necessary
+132,92,Stopping the WEC,1 Done - No defects
+133,Electrical system – Finishing steps,,
+134,93,Resetting warning messages and parameters,1 Done - No defects
+135,Mechanical - Tower base,,
+136,94,Checking foundation,1 Done - No defects
+137,95,Checking bolt connections on bolt cage with load ring,3 Not done - Not necessary
+138,96,Checking fire extinguisher in tower base,2 Done - Defects detected
+139,97,Visual inspection of tower base,2 Done - Defects detected
+140,Mechanical - Tower,,
+141,98,Checking the tower anchorage points,1 Done - No defects
+142,99,Checking the tower ventilation system,1 Done - No defects
+143,100,Checking the tower bolt connections,1 Done - No defects
+144,101,Checking the concrete tower,1 Done - No defects
+145,102,Checking the prestressing system,1 Done - No defects
+146,103,Checking steel tower,3 Not done - Not necessary
+147,104,Checking steel section,1 Done - No defects
+148,105,Visually inspecting the tower,1 Done - No defects
+149,Mechanical - Safety ladder,,
+150,106,Checking the safety ladder stickers,1 Done - No defects
+151,107,Checking the start and end of the climbing path of the safety ladder,1 Done - No defects
+152,108,Checking the C-profile and fall arrest noses on the safety ladder,1 Done - No defects
+153,109,Checking the mounting of the safety ladder,1 Done - No defects
+154,110,Checking the rungs of the safety ladder,1 Done - No defects
+155,111,Checking gap widths on ladder sections,2 Done - Defects detected
+156,112,"Visually inspecting safety ladder
+Measured values for item 112
+manufacturer / type safety ladder","1 Done - No defects
+
+LMB (SCS) - Tr280"
+160,113,Checking the safety catches of the safety ladder,1 Done - No defects
+161,114,Checking the lateral rail exits of the safety ladder,1 Done - No defects
+162,115,Checking the small rest platforms of the safety ladder,1 Done - No defects
+163,116,Checking the safety ladder fasteners,1 Done - No defects
+164,117,Performing a test climb of the safety ladder,1 Done - No defects
+165,118,Checking the ‘Next Check’ inspection label on the safety ladder,2 Done - Defects detected
+166,Mechanical - Service hoist,,
+167,119,"Checking the completeness of document pouch on service hoist
+Measured values for item 119
+next (third-party) inspection - month
+next (third-party) inspection - year","1 Done - No defects
+
+5
+2024"
+171,120,"Checking safety signs on service hoist
+Measured values for item 120
+Service hoist type
+serial number service hoist","1 Done - No defects
+
+ENERCON EL1 V2.0
+10-7553"
+175,121,"Checking the hoist cage of the service hoist
+Measured values for item 121
+Opening dimension of door profile, measuring point 1
+Opening dimension of door profile, measuring point 2
+Opening dimension of door profile, measuring point 3
+Opening dimension of door profile, measuring point 4","2 Done - Defects detected
+
+1 mm
+2 mm
+3 mm
+3 mm"
+181,122,Checking anchorage points on service hoist,1 Done - No defects
+182,123,Checking the wire rope guides on service hoist,1 Done - No defects
+183,124,Checking the key-operated switch in the lift cage,1 Done - No defects
+184,125,Checking the safety guard and cable pulley in the lift cage,1 Done - No defects
+185,126,Checking the hoist cage crossbeam of the service hoist,1 Done - No defects
+186,127,Checking the door safety switches on service hoist,1 Done - No defects
+187,128,Checking the top end-of-travel system in the parked position,1 Done - No defects
+188,129,Checking the service hoist floor cut-off switch,1 Done - No defects
+189,130,Checking the service hoist outside sensor in the parked position,1 Done - No defects
+190,131,Checking the service hoist emergency stop button,1 Done - No defects
+191,132,Checking the service hoist emergency control unit,1 Done - No defects
+192,133,Checking the hoist cable and safety cable at the hoist touchdown platform,1 Done - No defects
+193,134,Checking the cable fasteners with landing box,1 Done - No defects
+195,135,Checking the tension of guide ropes on service hoist,1 Done - No defects
+196,136,Checking the indicator lights on service hoist,1 Done - No defects
+197,137,"Checking service hoist winch
+Measured values for item 137
+Operating hours
+YOM of winch
+serial number winch","1 Done - No defects
+
+14 h
+2017
+212-w819331"
+202,138,"Checking the service hoist safety catch
+Measured values for item 138
+Safety catch designation
+serial number safety catch","1 Done - No defects
+
+Goracon G-Lock 600 (60955)
+F827178"
+206,139,Checking the automatic operation of the service hoist,2 Done - Defects detected
+207,140,Checking the steel cable for the service hoist,1 Done - No defects
+208,141,Oiling the steel cable for the service hoist,1 Done - No defects
+209,142,Checking the wire rope guide on landing platform service hoist,1 Done - No defects
+210,143,Checking the trailing cable and the restraint,1 Done - No defects
+211,144,Checking the landing platform switches on the platforms,1 Done - No defects
+212,145,Checking the guardrail locking device on service hoist,1 Done - No defects
+213,146,Checking the top end-of-travel system and cut-off device on the hoist exit platform 1 Done - No defects,
+214,147,Checking the upper tower crossbeam on service hoist,1 Done - No defects
+215,148,Performing a service hoist test run,1 Done - No defects
+216,149,Completing work on the service hoist,1 Done - No defects
+217,Mechanical - Machine house,,
+218,150,Checking the machine house anchorage points,1 Done - No defects
+219,151,"Inspect nacelle crane mechanically with chain hoist
+Measured values for item 151
+YOM of winch
+HERSTELLER WINDE
+serial number winch","1 Done - No defects
+
+2017
+DEMAG Cranes & Components GmbH
+94741590"
+224,152,Checking the machine house first aid kit,1 Done - No defects
+225,153,Checking the machine house fire extinguisher,2 Done - Defects detected
+226,154,Checking the Firespy fire-extinguishing system in the machine house,3 Not done - Not necessary
+227,155,Checking the machine house fitted parts,1 Done - No defects
+229,156,Checking the machine house casing,1 Done - No defects
+230,157,Checking the main carrier and the axle pin,1 Done - No defects
+231,158,Checking yaw gears,2 Done - Defects detected
+232,159,Checking yaw bearing,1 Done - No defects
+233,160,Checking the stator shield,1 Done - No defects
+234,161,Checking the rotor lock,2 Done - Defects detected
+235,162,Checking the electromechanical brake,1 Done - No defects
+236,163,Checking the shaft sleeve,1 Done - No defects
+237,164,Checking the machine house bolt connections,1 Done - No defects
+238,165,Visual inspection of machine house,2 Done - Defects detected
+239,Mechanical system – Rotor head,,
+240,166,Checking the rotor head anchorage points,1 Done - No defects
+241,167,Taking a front and rear main bearing grease sample,1 Done - No defects
+242,168,Greasing the rear and front rotor bearing,1 Done - No defects
+243,169,Perform a visual inspection of the generator rotor,1 Done - No defects
+244,170,Checking the rotor head casing,1 Done - No defects
+245,171,Checking the rotor hub and the blade adapters,1 Done - No defects
+246,172,Checking rotor head seals,2 Done - Defects detected
+247,173,Checking the pressure switch for the rotor head central lubrication system,2 Done - Defects detected
+248,174,Checking central lubrication system on rotor head,1 Done - No defects
+249,175,Checking pitch gear rotor blade A,2 Done - Defects detected
+250,176,Checking the pitch gear for rotor blade B,2 Done - Defects detected
+251,177,Checking the pitch gear for rotor blade C,2 Done - Defects detected
+252,178,Checking rotor blade A blade flange bearings,1 Done - No defects
+253,179,Checking the blade flange bearings of rotor blade B,1 Done - No defects
+254,180,Checking the blade flange bearings of rotor blade C,1 Done - No defects
+255,181,Check lightning protection system of rotor blade A,1 Done - No defects
+256,182,Check lightning protection system of rotor blade B,1 Done - No defects
+257,183,Check lightning protection system of rotor blade C,1 Done - No defects
+258,184,Checking the rotor head bolt connections,1 Done - No defects
+259,185,Visual inspection of rotor head,2 Done - Defects detected
+261,Mechanical - Rotor blade,,
+262,186,Checking the rotor blade A bolt connections,1 Done - No defects
+263,187,Checking the rotor blade B bolt connections,1 Done - No defects
+264,188,Checking the rotor blade C bolt connections,1 Done - No defects
+265,189,Check rotor blade A base plate,3 Not done - Not necessary
+266,190,Check rotor blade B base plate,3 Not done - Not necessary
+267,191,Check rotor blade C base plate,3 Not done - Not necessary
+268,192,Check rotor blade A reinforcing ring,1 Done - No defects
+269,193,Check rotor blade B reinforcing ring,1 Done - No defects
+270,194,Check rotor blade C reinforcing ring,1 Done - No defects
+271,195,Check the connection between the lightning protection cable and the discharge ring on rotor blade A,1 Done - No defects
+272,196,Check the connection between the lightning protection cable and the discharge ring on rotor blade B,1 Done - No defects
+273,197,Check the connection between the lightning protection cable and the discharge ring on rotor blade C,1 Done - No defects
+274,198,Check rotor blade A on outside nacelle,1 Done - No defects
+275,199,Check rotor blade B on outside nacelle,1 Done - No defects
+276,200,Check rotor blade C on outside nacelle,1 Done - No defects
+277,201,Check flange spoiler reinforcement laminate for rotor blade A,1 Done - No defects
+278,202,Check flange spoiler reinforcement laminate for rotor blade B,1 Done - No defects
+279,203,Check flange spoiler reinforcement laminate for rotor blade C,1 Done - No defects
+280,Mechanical - Nacelle exterior,,
+281,204,Checking anchorage points nacelle exterior,1 Done - No defects
+282,205,Checking fitted parts nacelle exterior,1 Done - No defects
+283,Mechanical-country-specif. maint. items,,
+284,206,Checking rescue barrel,3 Not done - Not necessary
+285,Mechanical system – finishing steps,,
+286,207,Repair paint,3 Not done - Not necessary
+287,208,Acoustic check of WEC,1 Done - No defects
+288,Report overview,,
+290,2,"tower, tower base - Cabinet, control cabinet inside
+","special, control system - Software
+version incorrect"
+293,39,"tower, tower base - cabinet, lighting","special, electrical component - battery discharged"
+294,57,"blade system A - cabinet, capacitor",testing/safety - label/sign missing
+295,63,rotor system - slip ring unit,"special, sealing - sealing missing"
+296,96,"tower, tower base - fire extinguisher","material, plastic - crack"
+297,96,"tower, tower base - fire extinguisher",testing/safety - inspection date missing/exceeded
+298,97,"outside, concrete tower - concrete body","material, concrete / mortar - crack vertical"
+299,97,"inside, concrete tower - concrete body","material, concrete / mortar - crack vertical"
+300,111,"tower, safety ladder, concrete tower - ladder support","connection, screwing - washer damage"
+301,118,"tower, safety ladder, concrete tower - ladder support","connection, screwing - washer damage"
+302,121,"tower, service hoist - cage","connection, intermediate part - support/angle broken off"
+303,139,"tower, service hoist - cage",special entries - Retrofit missing
+304,153,"nacelle, machine house - fire extinguisher",testing/safety - inspection date missing/exceeded
+305,158,"nacelle, yaw system - drive, gear, oil filtering valve special, drive system - Oil level too low",
+306,158,"nacelle, yaw system - drive, gear, oil filtering valve special, drive system - oil leakage",
+307,161,"generator, stator, fitted part - rotor lock, connection hose","special, tube/hose - damage, leak"
+308,165,"nacelle, machine house - casing, top",special entries - Retrofit missing
+309,172,rotor system - front main bearing,"special, bearing - grease leakage"
+310,172,all blade systems - bearing,"special, bearing - grease leakage"
+311,172,rotor system - rear main bearing,"special, drive system - oil leakage"
+312,173,"rotor system - central lubrication, pressure gauge","special, grease system - not working"
+313,175,"main component, screwing - Hub adapter – blade flange bearing, bl A",fit/gap size - wrong alignment
+314,176,"main component, screwing - rotor hub - blade flange bearing B",fit/gap size - wrong alignment
+315,177,"main component, screwing - rotor hub - blade flange bearing C",fit/gap size - wrong alignment
+316,185,"rotor system - front, casing","special, sealing - sealing missing"

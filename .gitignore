@@ -161,6 +161,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-#Fichiers plats
-*.csv
-*.xlsx
+# PyPI configuration file
+.pypirc
+
+# Projet spécifique
+.qodo
+camelot_config.json
+cursor_rules.json
+camelot_documentation.txt
+context.json
