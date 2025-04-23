@@ -170,3 +170,15 @@ camelot_config.json
 cursor_rules.json
 camelot_documentation.txt
 context.json
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
