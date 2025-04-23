@@ -170,3 +170,8 @@ camelot_config.json
 cursor_rules.json
 camelot_documentation.txt
 context.json
+
+# Cursor
+.cursor/rules 
+.cursorrules
+
