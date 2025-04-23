@@ -7,3 +7,4 @@ PyMuPDF==1.23.7
 ghostscript==0.7
 matplotlib==3.7.2
 opencv-python==4.8.0.76
+sqlalchemy==2.0.31
