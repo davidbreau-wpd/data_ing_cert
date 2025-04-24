@@ -112,3 +112,23 @@ resource "azurerm_role_assignment" "sp_role" {
   role_definition_name = var.sp_role_1
   principal_id         = azuread_service_principal.sp_datalake.object_id
 }
+
+# 📁📂 Création des dossiers dans le container
+locals {
+  folders = [
+    "enercon/input",
+    "enercon/output/metadatas",
+    "enercon/output/inspection_checklists",
+    "vestas/input",
+    "vestas/output/metadatas",
+    "vestas/output/inspection_checklists"
+  ]
+}
+
+resource "azurerm_storage_data_lake_gen2_path" "folders" {
+  for_each           = toset(local.folders)
+  path               = each.value
+  filesystem_name    = azurerm_storage_container.container.name
+  storage_account_id = azurerm_storage_account.adls.id
+  resource           = "directory"
+}
