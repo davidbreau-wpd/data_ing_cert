@@ -181,5 +181,7 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 .terraformrc
-terraform.rc**/.terraform/*
-venv/
+terraform.rc
+.terraform.lock.hcl
+tfplan
+terraform.tfstate
