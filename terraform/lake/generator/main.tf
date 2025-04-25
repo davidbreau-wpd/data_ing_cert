@@ -107,8 +107,8 @@ resource "azuread_service_principal_password" "sp_keyvault_password" {
 
 
 # 🔐 Stockage du mot de passe du SP Data Lake dans Key Vault
-resource "azurerm_key_vault_secret" "sp_secret" {
-  name         = var.kv_secret_name
+resource "azurerm_key_vault_secret" "sp_datalake_password" {
+  name         = "sp-datalake-password"
   value        = azuread_service_principal_password.sp_datalake_password.value
   key_vault_id = azurerm_key_vault.kv.id
 }
