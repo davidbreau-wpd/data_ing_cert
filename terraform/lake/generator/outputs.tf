@@ -35,4 +35,4 @@ output "sp_keyvault_password" {
   value       = azuread_service_principal_password.sp_keyvault_password.value
   description = "Mot de passe du Service Principal Key Vault"
   sensitive   = true
-}
+} 
