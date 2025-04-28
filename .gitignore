@@ -171,7 +171,17 @@ cursor_rules.json
 camelot_documentation.txt
 context.json
 
-# Cursor
-.cursor/rules 
-.cursorrules
-
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+.terraform.lock.hcl
+tfplan
+terraform.tfstate
