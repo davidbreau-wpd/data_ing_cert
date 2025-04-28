@@ -1,4 +1,5 @@
-import camelot, fitz, ghostscript, matplotlib.pyplot as plt, os, pandas as pd, re
+import camelot, fitz, matplotlib.pyplot as plt, os, pandas as pd, re
+
 from .service_report import _Service_Report
 
 class Enercon_Report(_Service_Report):
@@ -449,6 +450,28 @@ class Enercon_Report(_Service_Report):
             folder_path=inspection_checklist_output_folder
         )
 
+# def _process_report(self, metadata_output_folder, inspection_checklist_output_folder):
+#     print("Starting _process_report")  # Debug
+#     try:
+#         print("Setting order type")  # Debug
+#         self._set_order_type()
+        
+#         print("Checking if master")  # Debug
+#         self._check_is_master()
+        
+#         print("Setting metadata")  # Debug
+#         metadata = self.set_metadata()
+        
+#         print("Extracting inspection checklist")  # Debug
+#         raw_inspection = self.extract_inspection_checklist()
+        
+#         print("Formatting table")  # Debug
+#         formatted_inspection = self.format_table(raw_inspection)
+        
+#         # ... rest of the code ...
+#     except Exception as e:
+#         print(f"Error in _process_report: {str(e)}")
+#         raise
 class Enercon_Reports_Processor:
     """
     Processor class to handle batch processing of Enercon reports

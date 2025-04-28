@@ -1,11 +1,15 @@
 ipykernel
 
 numpy==1.24.3
-pandas==2.0.3
+
+modin[ray]==0.32.0
+
 camelot-py==0.11.0
 PyMuPDF==1.23.7
 ghostscript==0.7
 matplotlib==3.7.2
-opencv-python==4.8.0.76
 sqlalchemy==2.0.31
 python-dotenv==1.1.0
+
+ipywidgets==4.0.14
+opencv-python==4.8.0.76
