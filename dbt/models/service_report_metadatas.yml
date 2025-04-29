@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: service_reports_metadatas
+    columns:
+      - name: id
+        type: integer
+        tests:
+          - unique
+          - not_null
+      - name: service_company
+        type: text
+      - name: wec_serial_number
+        type: integer
+      - name: order_number
+        type: integer
+      - name: order_type
+        type: text
+      - name: start_date
+        type: date
+      - name: end_date
+        type: date
+      - name: completion_date
+        type: date
+        tests:
+          - not_null
+      - name: free_of_defects
+        type: integer
+      - name: defects
+        type: integer

@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: ingestion_trackings
+    columns:
+      - name: id
+        type: integer
+        tests:
+          - unique
+          - not_null
+      - name: file_name
+        type: text
+      - name: status
+        type: text
+      - name: processed_time
+        type: timestamp
