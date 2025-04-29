@@ -1,7 +1,7 @@
 import logging, os, subprocess
 from pathlib import Path
 
-class Lake:
+class DataLake:
     def _run(self, command, path=Path(__file__).parent.parent / "terraform" / "lake" / "generator"):
         os.chdir(path)
         result = subprocess.run(command, shell=True)
