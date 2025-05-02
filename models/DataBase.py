@@ -7,7 +7,12 @@ from enums import DatabaseType as Type
 
 
 class Engine:
-    def __init__(self, local_connection: Path = None, azure_connection: dict = None):
+    def __init__(self, local_connection: Path | None = None, azure_connection: dict | None = None):
+        if local_connection is not None and azure_connection is not None:
+            raise ValueError("Cannot specify both local and azure connections")
+        if local_connection is None and azure_connection is None:
+            raise ValueError("Must specify either local or azure connection")
+
         if local_connection:
             self.type = Type.Local
             self.connection_string = f"sqlite:///{local_connection}"
@@ -15,6 +20,7 @@ class Engine:
             self.type = Type.Azure
             self.connection_string = f"mssql+pyodbc://{azure_connection['username']}:{azure_connection['password']}@{azure_connection['server']}/{azure_connection['database']}?driver=ODBC+Driver+17+for+SQL+Server"
         else:
+
             raise ValueError("Either local_connection or azure_connection must be provided")
 
 class Database:
