@@ -26,7 +26,7 @@ class DatabaseManager:
             for sql_file in sorted(sql_folder.glob("*.sql")):
                 with open(sql_file, 'r') as f:
                     sql = f.read()
-                    conn.execute(text(sql))  # Add text() here
+                    conn.execute(text(sql)) 
                     conn.commit()
                 print(f"Executed {os.path.basename(sql_file)}")
 
