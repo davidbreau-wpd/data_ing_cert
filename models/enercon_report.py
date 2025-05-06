@@ -374,6 +374,51 @@ class Enercon_Report(_Service_Report):
             
         except (IndexError, KeyError):
             return pd.DataFrame()
+        
+    def categorize_inspection_items(self, inspection_checklist: pd.DataFrame) -> pd.DataFrame:
+        """
+        Add item_category and item_number columns based on the 'no' column content.
+        
+        This method processes an inspection checklist DataFrame by:
+        1. Identifying category rows (rows without numbers in 'no' column)
+        2. Adding an item_category column with the current category name
+        3. Adding an item_number column with incremental category counter
+        4. Removing the original category rows
+        
+        Args:
+            inspection_checklist (pd.DataFrame): DataFrame with columns ['no', 'check_item', 'result']
+            
+        Returns:
+            pd.DataFrame: Processed DataFrame with:
+                - Two new columns at the start: 'item_category' and 'item_number'
+                - Category rows removed
+                - Original columns preserved: ['no', 'check_item', 'result']
+        """
+        current_category = None
+        category_counter = 0
+        
+        # Create lists to store categories and numbers
+        categories = []
+        numbers = []
+        
+        # Iterate through rows
+        for idx, row in inspection_checklist.iterrows():
+            if pd.isna(row['no']) or not str(row['no']).replace('.', '').isdigit():
+                if not pd.isna(row['check_item']):
+                    current_category = row['check_item']
+                    category_counter += 1
+                categories.append(None)  # Will be dropped later
+                numbers.append(None)
+            else:
+                categories.append(current_category)
+                numbers.append(category_counter)
+        
+        # Insert new columns at the beginning
+        inspection_checklist.insert(0, 'item_number', numbers)
+        inspection_checklist.insert(0, 'item_category', categories)
+        
+        # Drop category rows
+        return inspection_checklist.dropna(subset=['no'])    
 
     def format_table(self, df: pd.DataFrame) -> pd.DataFrame:
         """Format the inspection table by applying cleaning pipeline."""
@@ -450,28 +495,7 @@ class Enercon_Report(_Service_Report):
             folder_path=inspection_checklist_output_folder
         )
 
-# def _process_report(self, metadata_output_folder, inspection_checklist_output_folder):
-#     print("Starting _process_report")  # Debug
-#     try:
-#         print("Setting order type")  # Debug
-#         self._set_order_type()
-        
-#         print("Checking if master")  # Debug
-#         self._check_is_master()
-        
-#         print("Setting metadata")  # Debug
-#         metadata = self.set_metadata()
-        
-#         print("Extracting inspection checklist")  # Debug
-#         raw_inspection = self.extract_inspection_checklist()
-        
-#         print("Formatting table")  # Debug
-#         formatted_inspection = self.format_table(raw_inspection)
-        
-#         # ... rest of the code ...
-#     except Exception as e:
-#         print(f"Error in _process_report: {str(e)}")
-#         raise
+
 class Enercon_Reports_Processor:
     """
     Processor class to handle batch processing of Enercon reports
