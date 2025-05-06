@@ -6,4 +6,5 @@ ALTER TABLE service_reports_metadatas
     
     ADD CONSTRAINT FK_ingestion_trackings__service_reports_metadatas
         FOREIGN KEY (service_report_uuid)
-        REFERENCES ingestion_trackings(service_report_uuid);
+        REFERENCES ingestion_trackings(service_report_uuid),
+        
