@@ -142,6 +142,8 @@ LOCAL_DB_NAME: Final[str] = 'windmanager_test.db'
 LOCAL_DB_PATH: Final[Path] = LOCAL_DB_FOLDER / LOCAL_DB_NAME
 
 
+
+
 class LocalDatabase(Database):
     @classmethod
     def connect(cls):

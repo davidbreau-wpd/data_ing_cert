@@ -1,8 +1,0 @@
-table_name: test_table
-columns:
-  - name: id
-    type: integer
-    primary_key: true
-  - name: name
-    type: string
-    nullable: false
