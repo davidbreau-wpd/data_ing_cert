@@ -2,9 +2,11 @@ import logging
 from pathlib import Path 
 from contextlib import contextmanager
 from sqlalchemy import create_engine, text
-from typing import Union, List, Final
+from typing import Final
+from sqlmodel import SQLModel, Session
 
 from enums import DatabaseType as Type
+from .tables import IngestionTracking, ServiceReportMetadata, ServiceReportChecklist
 
 
 class Engine:
@@ -32,41 +34,20 @@ class Database:
     def switch_on(self, engine_config: Engine):
         """Manage database connection with specific behavior based on type"""
         self.engine = create_engine(engine_config.connection_string)
-        connection = None
+        SQLModel.metadata.create_all(self.engine)
         try:
             logging.info(f"Connecting to {engine_config.type.name} database.")
-            connection = self.engine.connect()
             yield self
         finally:
-            if connection:
-                connection.close()
             if self.engine:
                 self.engine.dispose()
-    
-    def execute_sql_files(self, sql_folder: Path, file_pattern: str = "*.sql") -> None:
-        """Execute SQL files in the specified folder"""
-        if not self.engine:
-            raise ValueError("Database not connected")
-
-        with self.engine.connect() as conn:
-            for sql_file in sorted(sql_folder.glob(file_pattern)):
-                try:
-                    with open(sql_file, 'r') as f:
-                        sql = f.read()
-                    # Using text() to safely parameterize SQL
-                    conn.execute(text(sql))
-                    conn.commit()
-                    logging.info(f"✅ Executed {sql_file.name}")
-                except Exception as e:
-                    logging.error(f"❌ Error executing {sql_file.name}: {str(e)}")
-                    raise
 
     def build(self) -> None:
-        """Creates the database if it doesn't exist"""
+        """Creates the database and tables if they don't exist"""
         if not self.engine:
             raise ValueError("Database not connected")
-        with self.engine.connect() as conn:
-            pass
+        SQLModel.metadata.create_all(self.engine)
+        logging.info("✅ Database built")
 
     def drop_tables(self) -> None:
         """Drops all tables after confirmation"""
@@ -74,15 +55,10 @@ class Database:
         if confirm.lower() != 'y':
             raise Exception("❌ Operation cancelled by user")
             
-        with self.engine.connect() as conn:
-            # Get all tables and drop them
-            tables = conn.execute(text("SELECT name FROM sqlite_master WHERE type='table'"))
-            for table in tables:
-                conn.execute(text(f"DROP TABLE IF EXISTS {table[0]}"))
-            conn.commit()
+        SQLModel.metadata.drop_all(self.engine)
         logging.info("✅ All tables dropped")
     
-    def delete(self) -> None:
+    def dump(self) -> None:
         """Delete the database and close all connections"""
         confirm = input("\n⚠️ Are you sure you want to delete the database? (y/N): ")
         if confirm.lower() != 'y':
@@ -93,55 +69,11 @@ class Database:
             self.engine.dispose()
         logging.info("✅ Database deleted")
 
-    def _execute_query(self, query: str, description: str = "") -> None:
-        """Execute a single SQL query"""
-        if not self.engine:
-            raise ValueError("Database not connected")
-            
-        with self.engine.connect() as conn:
-            try:
-                conn.execute(text(query))
-                conn.commit()
-                if description:
-                    logging.info(f"✅ {description}")
-            except Exception as e:
-                logging.error(f"❌ Error: {str(e)}")
-                raise
 
-    def define_tables(self, models_folder: Path) -> None:
-        """Define database table structures from SQL files"""
-        if not self.engine:
-            raise ValueError("Database not connected")
-    
-        for sql_file in sorted(models_folder.glob("*.sql")):
-            with open(sql_file, 'r') as f:
-                self._execute_query(f.read(), f"Defined table from {sql_file.name}")
-    
-    def set_constraints(self, constraints_folder: Path) -> None:
-        """Set constraints on existing tables"""
-        if not self.engine:
-            raise ValueError("Database not connected")
-    
-        for sql_file in sorted(constraints_folder.glob("*.sql")):
-            with open(sql_file, 'r') as f:
-                self._execute_query(f.read(), f"Set constraints from {sql_file.name}")
-    
-    def initialize_data(self, seeds_folder: Path) -> None:
-        """Initialize tables with reference data"""
-        if not self.engine:
-            raise ValueError("Database not connected")
-    
-        for sql_file in sorted(seeds_folder.glob("*.sql")):
-            with open(sql_file, 'r') as f:
-                self._execute_query(f.read(), f"Initialized data from {sql_file.name}")
-
-
-# Constants with type hints
+# Constants
 LOCAL_DB_FOLDER: Final[Path] = Path('data')
 LOCAL_DB_NAME: Final[str] = 'windmanager_test.db'
 LOCAL_DB_PATH: Final[Path] = LOCAL_DB_FOLDER / LOCAL_DB_NAME
-
-
 
 
 class LocalDatabase(Database):
@@ -149,4 +81,3 @@ class LocalDatabase(Database):
     def connect(cls):
         """Returns a context manager for the local test database"""
         return cls().switch_on(Engine(local_connection=LOCAL_DB_PATH))
-    
