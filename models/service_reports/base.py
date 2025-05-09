@@ -1,9 +1,9 @@
 import camelot, fitz, matplotlib.pyplot as plt, os, logging, pandas as pd, re, numpy as np
-from .utils import log_errors, dataframe_required
+from ..utils import log_errors, dataframe_required  # Mise à jour du chemin d'import
 
 logging.getLogger('pdfminer').setLevel(logging.ERROR)
 
-class _Service_Report:
+class _Service_Report_Parser:
     """
     Base class for processing service company reports, providing generic and reusable functions
     that can handle various PDF structures across different service companies.
