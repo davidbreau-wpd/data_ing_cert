@@ -1,5 +1,13 @@
-import camelot, fitz, matplotlib.pyplot as plt, os, logging, pandas as pd, re, numpy as np
-from ..utils import log_errors, dataframe_required  # Mise à jour du chemin d'import
+import os
+import re
+import logging
+import numpy as np
+import pandas as pd
+import camelot
+import fitz
+import matplotlib.pyplot as plt
+
+from ..utils import log_errors, dataframe_required
 
 logging.getLogger('pdfminer').setLevel(logging.ERROR)
 

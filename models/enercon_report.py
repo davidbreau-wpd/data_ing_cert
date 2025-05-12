@@ -18,16 +18,6 @@ class Enercon_Report(_Service_Report):
 
         Args:
             file_path (str): Path to the PDF file to process
-
-        Attributes:
-            camelot_params (dict): Configuration parameters for Camelot table extraction:
-                - flavor (str): Parser type ('stream')
-                - columns (list): Column coordinates [65,450]
-                - table_areas (list): Table boundary coordinates [20,730,600,40]
-                - edge_tol (int): Edge tolerance for table detection (700)
-                - row_tol (int): Row tolerance for merging (13)
-                - split_text (bool): Whether to split text into multiple rows (False)
-                - strip_text (str): Characters to strip from text ('\n')
         """
         super().__init__(file_path)
         self._set_order_type()
@@ -184,8 +174,7 @@ class Enercon_Report(_Service_Report):
         defects_summary_df = self._convert_to_dataframe(defects_summary_table)
         merged_defects_df = self._stack_columns_in_pairs(defects_summary_df)
         return merged_defects_df
-        
-        return defects_summary_df 
+
 
     def get_metadata(self) -> pd.DataFrame:
         """

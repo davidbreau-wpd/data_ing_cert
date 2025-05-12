@@ -21,14 +21,14 @@ class Enercon_Processor:
         
         return f"{serial_number}_enercon_{order_type.replace(' ', '_').lower()}_{order_number}"
 
-    def process_single_report(self, file_path: Path, metadata_output_folder: Path, inspection_output_folder: Path) -> None:
+    def process_single_report(self, file_path: Path, metadata_output_folder: Path, inspection_checklist_output_folder: Path) -> None:
         """
         Process a single Enercon PDF report and save its data.
 
         Args:
             file_path: Path to the PDF file
             metadata_output_folder: Where to save metadata CSV
-            inspection_output_folder: Where to save inspection checklist CSV
+            inspection_checklist_output_folder: Where to save inspection checklist CSV
         """
         # Initialize parser and extract data
         parser = Enercon_PDF_Parser(file_path)
@@ -42,20 +42,23 @@ class Enercon_Processor:
         
         # Save to CSV files
         metadata_df.to_csv(metadata_output_folder / f"metadata_{filename}.csv")
-        inspection_df.to_csv(inspection_output_folder / f"inspection_{filename}.csv")
+        inspection_df.to_csv(inspection_checklist_output_folder / f"inspection_{filename}.csv")
 
-    def __call__(self, metadata_output_folder: Path, inspection_output_folder: Path) -> None:
+    def __call__(self, metadata_output_folder: Path, inspection_checklist_output_folder: Path) -> None:
         """
         Process all PDF files in the input folder.
 
         Args:
             metadata_output_folder: Directory for metadata CSV files
-            inspection_output_folder: Directory for inspection checklist CSV files
+            inspection_checklist_output_folder: Directory for inspection checklist CSV files
         """
+        metadata_output_folder.mkdir(parents=True, exist_ok=True)
+        inspection_checklist_output_folder.mkdir(parents=True, exist_ok=True)
+
         for pdf_file in os.listdir(self.input_folder):
-            if pdf_file.lower().endswith('.pdf'):
-                file_path = os.path.join(self.input_folder, pdf_file)
+            if str(pdf_file).lower().endswith('.pdf'):  # Convert to str before calling lower()
+                file_path = self.input_folder / pdf_file
                 try:
-                    self.process_single_report(file_path, metadata_output_folder, inspection_output_folder)
+                    self.process_single_report(file_path, metadata_output_folder, inspection_checklist_output_folder)
                 except Exception as e:
                     print(f"Error processing {pdf_file}: {e}")

@@ -17,16 +17,6 @@ class Enercon_PDF_Parser(_Service_Report_Parser):
 
         Args:
             file_path (str): Path to the PDF file to process
-
-        Attributes:
-            camelot_params (dict): Configuration parameters for Camelot table extraction:
-                - flavor (str): Parser type ('stream')
-                - columns (list): Column coordinates [65,450]
-                - table_areas (list): Table boundary coordinates [20,730,600,40]
-                - edge_tol (int): Edge tolerance for table detection (700)
-                - row_tol (int): Row tolerance for merging (13)
-                - split_text (bool): Whether to split text into multiple rows (False)
-                - strip_text (str): Characters to strip from text ('\n')
         """
         super().__init__(file_path)
         self._set_order_type()
@@ -114,42 +104,70 @@ class Enercon_PDF_Parser(_Service_Report_Parser):
     
     def _get_details_on_order(self) -> pd.DataFrame:
         """
-        Extract the 'Details on Order' table from page 2 of the PDF report.
-        
+        Extracts the 'Details on Order' table from page 2 and merges continuation lines.
+
+        This method retrieves and processes the 'Details on Order' table, which contains
+        order-specific information. The table is extracted using customized parameters
+        based on whether the report is a master/yearly report or not.
+
+        The extraction parameters are adjusted to:
+        - Use a single column at position 195
+        - Target an area between coordinates that vary based on report type
+        - Set row tolerance to 10 for merging nearby rows
+        - Enable text splitting for better data parsing
+
         Returns:
-            pd.DataFrame: DataFrame containing the extracted details on order
+            pd.DataFrame: A processed DataFrame containing the order details with:
+                - Order information fields as rows
+                - Merged continuation lines based on capitalization patterns
+                - Empty rows removed
         """
-        details_params = {
+        details_on_order_params = {
             **self.camelot_params,
-            'columns': ['125, 290, 390'],
-            'table_areas': ['20,620,600,540'],
+            'columns': ['198'],
+            'table_areas': [f'20,585,600,{380 if self.is_master else 430}'],
+            'row_tol': 10,
             'split_text': True
         }
         
-        details_table = self._extract_single_page_table(2, **details_params)
-        details_df = self._convert_to_dataframe(details_table)
-        merged_details_df = self._stack_columns_in_pairs(details_df)
-        merged_details_df = merged_details_df.replace('', pd.NA).dropna(how='all')
-        return merged_details_df
+        details_table = self._extract_single_page_table(2, **details_on_order_params)
+        details_on_order = self._convert_to_dataframe(details_table)
+        
+        details_on_order = self.merge_rows_by_capitalization(details_on_order)
+        
+        return details_on_order
     
     def _get_defects_summary(self) -> pd.DataFrame:
         """
-        Extract the 'Defects Summary' table from page 2 of the PDF report.
-        
+        Extracts the defects summary table based on report type and reorganizes columns in pairs.
+
+        This method retrieves and processes the defects summary table from page 2 of the report.
+        The table extraction parameters are adjusted based on whether the report is a master/yearly
+        report or not.
+
+        The extraction parameters are customized to:
+        - Use 5 columns at positions 115, 155, 235, 280, and 330
+        - Target an area between coordinates that vary based on report type
+        - Enable text splitting for better data parsing
+
         Returns:
-            pd.DataFrame: DataFrame containing the extracted defects summary
-        """
-        defects_params = {
+            pd.DataFrame: A processed DataFrame containing the defects summary with:
+                - Defect information organized in columns
+                - Columns stacked in pairs for better organization
+                - Empty rows removed
+        """   
+        table_areas = ['20, 265, 600, 300']
+        
+        defects_summary_params = {
             **self.camelot_params,
-            'columns': ['125, 290, 390'],
-            'table_areas': ['20,540,600,460'],
+            'columns': ['115, 155, 235, 280, 330'],
+            'table_areas': [f'20,{305 if self.is_master else 370},600,{275 if self.is_master else 340}'],
             'split_text': True
         }
         
-        defects_table = self._extract_single_page_table(2, **defects_params)
-        defects_df = self._convert_to_dataframe(defects_table)
-        merged_defects_df = self._stack_columns_in_pairs(defects_df)
-        merged_defects_df = merged_defects_df.replace('', pd.NA).dropna(how='all')
+        defects_summary_table = self._extract_single_page_table(2, **defects_summary_params)
+        defects_summary_df = self._convert_to_dataframe(defects_summary_table)
+        merged_defects_df = self._stack_columns_in_pairs(defects_summary_df)
         return merged_defects_df
     
     def get_metadata_df(self) -> pd.DataFrame:
@@ -183,18 +201,14 @@ class Enercon_PDF_Parser(_Service_Report_Parser):
     def extract_raw_checklist(self) -> pd.DataFrame:
         """
         Extract raw inspection checklist data from the PDF.
-        
-        This method:
-        1. Extracts tables from relevant pages
-        2. Combines all tables into a single DataFrame
-        
-        Returns:
-            pd.DataFrame: Raw inspection checklist data before formatting
         """
         try:
+            with fitz.open(self.file_path) as doc:
+                total_pages = len(doc)
+
             tables = camelot.read_pdf(
                 str(self.file_path),
-                pages='3-end',
+                pages=f'2-{total_pages}',  # Changed from '3-end' to '2-{total_pages}'
                 **self.camelot_params
             )
             
@@ -223,21 +237,116 @@ class Enercon_PDF_Parser(_Service_Report_Parser):
         checklist_df = self._extract_inspection_checklist(df)
         return self._merge_dataframes(checklist_df, overview_df)
 
+    def _filter_inspection_rows(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        This method extracts the relevant inspection data by:
+        1. Finding the row after the 'Details' header
+        2. Finding the row before the 'Signature' section
+        3. Removing header rows with "No."
+        """
+        try:
+            # Get start index (after "Details")
+            start_idx = df[df[0].eq("Details")].index[0] + 1
+            
+            # Get end index (before "Signature")
+            end_idx = df[df[0].str.contains("Signature", na=False)].index[0]
+            
+            # Filter rows between start and end, excluding "No." rows
+            filtered_df = df.loc[start_idx:end_idx - 1]
+            return filtered_df[~filtered_df[0].eq("No.")]
+            
+        except (IndexError, KeyError):
+            return df
+
+    def _check_and_get_overview(self, df: pd.DataFrame, camelot_tables) -> pd.DataFrame:
+        """
+        Check if Report Overview exists and extract it.
+        Returns either the overview section or the complete df if no overview found.
+        """
+        overview_mask = df[0].str.contains("Report overview", na=False, case=False)
+        if overview_mask.any():
+            overview_index = overview_mask[overview_mask].index[0]
+            # Keep only rows after "Report Overview"
+            overview_df = self._extract_report_overview(df, camelot_tables)
+            return overview_df if not overview_df.empty else df
+        return df
+
+    def format_table(self, df: pd.DataFrame, tables) -> pd.DataFrame:
+        """Format the inspection table with minimal cleaning."""
+        formatting_pipeline = [
+            self._filter_inspection_rows,
+            lambda x: self._check_and_get_overview(x, tables),
+            super().standardize_columns,
+            lambda x: self.merge_rows_by_capitalization(x, new_line=True)
+        ]
+        return super()._apply_formatting_pipeline(df, formatting_pipeline)
+
     def get_inspection_checklist_df(self) -> pd.DataFrame:
         """
         Extract and format the complete inspection checklist.
-        
-        This method:
-        1. Extracts raw checklist data
-        2. Applies formatting pipeline
-        
-        Returns:
-            pd.DataFrame: Complete formatted inspection checklist
         """
         try:
             raw_checklist = self.extract_raw_checklist()
-            return self.format_checklist(raw_checklist)
+            return self.format_table(raw_checklist)
             
         except Exception as e:
             print(f"Error processing inspection checklist: {e}")
+            return pd.DataFrame()
+
+    def _extract_report_overview(self, df: pd.DataFrame, camelot_tables=None) -> pd.DataFrame:
+        """Extract and format the Report Overview section"""
+        try:
+            # Find "Report Overview" row
+            overview_row = df[df[0].str.contains("Report overview", na=False, case=False)].index[0]
+            
+            # Extract tables from page 3 onwards
+            tables = camelot.read_pdf(
+                str(self.file_path),
+                pages='3-end',
+                **self.camelot_params
+            )
+            
+            # Find which table and page contains "Report Overview"
+            row_count = 0
+            for i, table in enumerate(tables):
+                table_df = self._convert_to_dataframe(table)
+                if row_count + len(table_df) > overview_row:
+                    overview_page = i + 2  # +2 car camelot commence à la page 2
+                    relative_row = overview_row - row_count
+                    # Get y coordinate where to start extraction
+                    y_coord = table.cells[relative_row][0].y1
+                    break
+                row_count += len(table_df)
+            
+            # Extract overview tables from multiple pages
+            overview_dfs = []
+            
+            # First page: extract from Report Overview position
+            first_params = {
+                'flavor': 'stream',
+                'columns': ['58,285,470'],
+                'table_areas': [f'20,{y_coord},600,40'],
+                'pages': str(overview_page),
+                'edge_tol': 500,
+                'row_tol': 10
+            }
+            first_table = camelot.read_pdf(self.file_path, **first_params)
+            overview_dfs.extend(self._convert_to_dataframe(table) for table in first_table)
+            
+            # Following pages if needed
+            if overview_page < len(tables) + 1:
+                following_params = {
+                    **self.camelot_params,
+                    'columns': ['58,285,470'],
+                    'pages': f"{overview_page + 1}-{len(tables) + 1}"
+                }
+                following_tables = camelot.read_pdf(self.file_path, **following_params)
+                overview_dfs.extend(self._convert_to_dataframe(table) for table in following_tables)
+            
+            # Combine and clean
+            overview_df = pd.concat(overview_dfs, ignore_index=True)
+            return overview_df.dropna(how='all')
+            
+        except (IndexError, KeyError) as e:
+            print(f"Error extracting report overview: {e}")
             return pd.DataFrame()
