@@ -372,4 +372,32 @@ class _Service_Report_Parser:
         
         return pd.concat([main_df, overview_df], ignore_index=True)
 
+    def _filter_inspection_rows(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Filter inspection rows from the checklist.
+        
+        This method:
+        1. Finds the row after 'Details' header
+        2. Finds the row before 'Signature' section
+        3. Removes header rows with 'No.'
+        
+        Args:
+            df (pd.DataFrame): Raw checklist DataFrame
+            
+        Returns:
+            pd.DataFrame: Filtered inspection rows
+        """
+        try:
+            # Get start index (after "Details")
+            start_idx = df[df[0].str.contains("Details", na=False, case=False)].index[0] + 1
+            
+            # Get end index (before "Signature")
+            end_idx = df[df[0].str.contains("Signature", na=False, case=False)].index[0]
+            
+            # Filter rows between start and end, excluding "No." rows
+            filtered_df = df.loc[start_idx:end_idx - 1]
+            return filtered_df[~filtered_df[0].str.contains("No.", na=False)]
+            
+        except (IndexError, KeyError):
+            return df
+
 

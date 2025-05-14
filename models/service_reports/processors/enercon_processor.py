@@ -14,7 +14,7 @@ class Enercon_Processor:
         """
         Generate standardized filename based on report metadata.
         """
-        metadata_df = parser.get_metadata_df()
+        metadata_df = parser.get_metadata()
         order_type = parser.order_type if hasattr(parser, 'order_type') else "unknown"
         order_number = metadata_df.loc["Order number", "Metadata"] if "Order number" in metadata_df.index else "unknown"
         serial_number = metadata_df.loc["Serial number", "Metadata"] if "Serial number" in metadata_df.index else "unknown"
@@ -34,8 +34,8 @@ class Enercon_Processor:
         parser = Enercon_PDF_Parser(file_path)
         
         # Get formatted data
-        metadata_df = parser.get_metadata_df()
-        inspection_df = parser.get_inspection_checklist_df()
+        metadata_df = parser.get_metadata()
+        inspection_df = parser.get_inspection_checklist()
         
         # Generate filename
         filename = self._generate_filename(parser)

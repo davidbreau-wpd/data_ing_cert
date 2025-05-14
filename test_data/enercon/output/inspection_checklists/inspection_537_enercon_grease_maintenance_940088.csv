@@ -1,1 +1,35 @@
-""
+,no,check_item,result
+5,Order type,GREASE MAINTENANCE,
+6,Order number,940088,
+7,Final date of order completion,"Mar 18, 2025",
+8,Completion date of report,"Mar 18, 2025",
+9,Inspection lot number,94000420,
+10,Document number,TD-esxx-xxx-11-017 Rev004,
+11,Performing team,T71 SST Plone,
+12,Performing company,ENERCON SERVICE FRANCE OUEST,
+13,Inspection checklist,,
+14,Summary of the test results,,
+15,Free of defects 13,Total141With defects,
+16,Details,,
+18,Tower base,,
+19,1,Carrying out a visual inspection of the tower base,1 Done - No defects
+20,2,Checking RCD tower base,1 Done - No defects
+21,Tower,,
+22,3,Visually inspecting the tower,1 Done - No defects
+23,Machine house,,
+24,4,Checking the machine house first aid kit,1 Done - No defects
+25,5,Checking the fire extinguisher in the machine house,1 Done - No defects
+26,6,Checking RCD machine house,1 Done - No defects
+27,7,Checking the yaw bearing,1 Done - No defects
+29,8,Visual inspection of machine house,1 Done - No defects
+30,Rotor head,,
+31,9,Checking rotor head seals,1 Done - No defects
+32,10,Grease rotor head bearings,1 Done - No defects
+33,11,Checking blade flange bearings,1 Done - No defects
+34,12,Visual inspection of rotor head,1 Done - No defects
+35,Nacelle exterior,,
+36,13,Inspecting rotor blade exterior,2 Done - Defects detected
+37,Finishing steps,,
+38,14,Acoustic check of WEC,1 Done - No defects
+39,Report overview,,
+41,13,"Erosion - Bladecoat porous, flaking Blade tip - Blade tip20-50mm",92003987
