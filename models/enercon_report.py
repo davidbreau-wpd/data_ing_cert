@@ -143,37 +143,22 @@ class Enercon_Report(_Service_Report):
         return details_on_order
 
     def _get_defects_summary(self) -> pd.DataFrame:
-        """
-        Extracts the defects summary table based on report type and reorganizes columns in pairs.
-
-        This method retrieves and processes the defects summary table from page 2 of the report.
-        The table extraction parameters are adjusted based on whether the report is a master/yearly
-        report or not.
-
-        The extraction parameters are customized to:
-        - Use 5 columns at positions 115, 155, 235, 280, and 330
-        - Target an area between coordinates that vary based on report type
-        - Enable text splitting for better data parsing
-
-        Returns:
-            pd.DataFrame: A processed DataFrame containing the defects summary with:
-                - Defect information organized in columns
-                - Columns stacked in pairs for better organization
-                - Empty rows removed
-        """   
-        table_areas = ['20, 265, 600, 300']
-        
         defects_summary_params = {
             **self.camelot_params,
             'columns': ['115, 155, 235, 280, 330'],
             'table_areas': [f'20,{305 if self.is_master else 370},600,{275 if self.is_master else 340}'],
-            'split_text': True
+            'split_text': True,
+            'edge_tol': 500  # Add tolerance for edge detection
         }
         
-        defects_summary_table = self._extract_single_page_table(2, **defects_summary_params)
-        defects_summary_df = self._convert_to_dataframe(defects_summary_table)
-        merged_defects_df = self._stack_columns_in_pairs(defects_summary_df)
-        return merged_defects_df
+        try:
+            defects_summary_table = self._extract_single_page_table(2, **defects_summary_params)
+            defects_summary_df = self._convert_to_dataframe(defects_summary_table)
+            merged_defects_df = self._stack_columns_in_pairs(defects_summary_df)
+            return merged_defects_df
+        except ValueError:
+            # Return empty DataFrame if table not found
+            return pd.DataFrame(columns=[0, 1])
 
 
     def get_metadata(self) -> pd.DataFrame:

@@ -185,3 +185,7 @@ terraform.rc
 .terraform.lock.hcl
 tfplan
 terraform.tfstate
+
+
+# TEMP FILES
+power_bi_data/

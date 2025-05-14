@@ -1,0 +1,5 @@
+Il fuat plus que :
+
+mettre format checklist sans report_overview
+reecrire overview avec inspection checlist et pas raw checklist
+appeler overview dans get inspection checklist ?

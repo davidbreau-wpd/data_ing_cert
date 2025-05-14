@@ -221,29 +221,21 @@ class Vestas_Reports_Processor:
     def __init__(self, input_folder: str):
         self.input_folder = input_folder
 
-    def __call__(self, metadata_output_folder: str, inspection_checklist_output_folder: str):
-        """
-        Process all Vestas PDF reports in a folder and save results to specified output locations.
-
-        This method:
-        1. Iterates through all PDF files in the input folder
-        2. Creates a Vestas_Report instance for each file
-        3. Processes each report to extract metadata and inspection checklists
-        4. Saves the extracted data to the specified output folders
-
-        Args:
-            metadata_output_folder (str): Directory path where metadata CSV files will be saved
-            inspection_checklist_output_folder (str): Directory path where inspection checklist CSV files will be saved
-
-        The saved files will follow the naming pattern:
-        - Metadata: 'metadata_{turbine_number}_vestas_{service_order}_{reason_for_call_out}.csv'
-        - Inspection: 'inspection_{turbine_number}_vestas_{service_order}_{reason_for_call_out}.csv'
-        """
+    def __call__(self, metadata_output_folder, inspection_checklist_output_folder):
+        """Process all PDF files in the input folder."""
         for pdf_file in os.listdir(self.input_folder):
-            if pdf_file.lower().endswith('.pdf'):
+            if not pdf_file.endswith('.pdf'):
+                continue
+                
+            try:
                 file_path = os.path.join(self.input_folder, pdf_file)
                 report = Vestas_Report(file_path)
                 report._process_report(
                     metadata_output_folder,
                     inspection_checklist_output_folder
                 )
+                print(f"Successfully processed {pdf_file}")
+            except ValueError as e:
+                print(f"Skipping {pdf_file}: {str(e)}")
+            except Exception as e:
+                print(f"Error processing {pdf_file}: {str(e)}")
