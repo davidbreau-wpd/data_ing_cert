@@ -274,30 +274,6 @@ class Enercon_Report(_Service_Report):
             return (main_df, self._extract_report_overview(df, camelot_tables))
         return None
 
-    def extract_inspection_checklist(self) -> pd.DataFrame:
-        """Extracts the complete inspection checklist including overview if present"""
-        with fitz.open(self.file_path) as doc:
-            total_pages = len(doc)
-    
-        # Extract main tables with camelot
-        tables = camelot.read_pdf(
-            self.file_path,
-            pages=f"2-{total_pages}",
-            **self.camelot_params
-        )
-        
-        # Convert main tables to DataFrame
-        main_df = pd.concat([self._convert_to_dataframe(table) for table in tables], ignore_index=True)
-        
-        # Check and get overview section if needed
-        result = self._check_and_get_overview(main_df, tables)
-        
-        # Merge if overview exists
-        if result is not None:
-            main_df_clean, overview_df = result
-            main_df = super()._merge_dataframes(main_df_clean, overview_df, columns_to_keep=[0, 1, 2])
-        
-        return main_df
 
     def _extract_report_overview(self, df: pd.DataFrame, camelot_tables) -> pd.DataFrame:
         """Extract and format the Report Overview section"""
