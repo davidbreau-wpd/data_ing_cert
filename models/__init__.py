@@ -4,6 +4,7 @@ from .enercon_report import Enercon_Report, Enercon_Reports_Processor
 from .DataBase import Engine, Database, LocalDatabase
 from .DataLake import DataLake
 from .tables import IngestionTracking, ServiceReportMetadata, ServiceReportChecklist
+from .pdf_readers import PdfReader, TableReader
 
 __all__ = [
     '_Service_Report',
@@ -11,5 +12,6 @@ __all__ = [
     'Enercon_Report', 'Enercon_Reports_Processor',
     'Engine', 'Database', 'LocalDatabase',
     'DataLake',
-    'IngestionTracking', 'ServiceReportMetadata', 'ServiceReportChecklist'
+    'IngestionTracking', 'ServiceReportMetadata', 'ServiceReportChecklist',
+    'PdfReader', 'TableReader'
 ]
