@@ -37,15 +37,17 @@ class Enercon_Parser:
             'row_tol': 13,
             'split_text': True
         }
-        
-        tables = camelot.read_pdf(
-            filepath=self.pdf_path,
+        raw_converter_master_data = camelot.read_pdf(
+            filepath=str(self.pdf_path),
             pages='2',
-            **master_data_params)
+            **master_data_params)[0]
+            # extracts raw master data from pdf 
+            
+        raw_cvd_pandas = raw_converter_master_data.df
+        raw_cvd_polars = pl.from_pandas(raw_cvd_pandas)
         
-        ic(tables)
-        table = tables[0].df
-        ic(table)
+        # ic(raw_converter_polars)
+        
         
         # master_data_table = self._extract_single_page_table(2, **master_data_params)
         # master_data_df = self._convert_to_dataframe(master_data_table)
