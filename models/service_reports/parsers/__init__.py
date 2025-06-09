@@ -1,3 +1,3 @@
-from .enercon_parser import Enercon_Parser
+from .enercon_parser import EnerconParser
 
-__all__ = ['Enercon_Parser']
+__all__ = ['EnerconParser']

@@ -1,13 +1,15 @@
 import fitz
 import camelot
-import polars as pl 
+import pandas as pd
+
+from utils.formatters import CSVFormatter
 
 from loguru import logger
 from pathlib import Path
 
 from icecream import ic
 
-class Enercon_Parser:
+class EnerconParser:
     def __init__(self, pdf_path: Path):
         """ Parser instance params 
         Args:
@@ -16,7 +18,7 @@ class Enercon_Parser:
         self.pdf_path = pdf_path
 
         
-    def _check_is_master(self):
+    def _check_if_master(self):
         """ Determines if report is Master or 4-yearly according to title 
             (Note : This helps to determine how many rows "Details on order" metadata will have)
         Returns:
@@ -28,8 +30,12 @@ class Enercon_Parser:
                 return is_master
         except Exception as e:
             logger.error(f"Error while reading order type : {e}")
-                          
-    def _get_converter_master_data(self) -> pl.DataFrame:
+
+    def _get_converter_master_data(self) -> pd.DataFrame:
+        """ Extracts 'Converter Master Data' table from page 2 
+        returns:
+            pd.DataFrame: Master data table """
+            
         master_data_params = {
             'flavor': 'stream',
             'columns': ['125, 290, 390'],
@@ -37,20 +43,42 @@ class Enercon_Parser:
             'row_tol': 13,
             'split_text': True
         }
-        raw_converter_master_data = camelot.read_pdf(
+        raw_converter_data = camelot.read_pdf(
             filepath=str(self.pdf_path),
             pages='2',
-            **master_data_params)[0]
+            **master_data_params)
+        raw_converter_df = raw_converter_data[0].df
             # extracts raw master data from pdf 
             
-        raw_cvd_pandas = raw_converter_master_data.df
-        raw_cvd_polars = pl.from_pandas(raw_cvd_pandas)
+        formatted_converter_df = CSVFormatter.stack_column_in_pairs(raw_converter_df)
+            # format data
         
-        # ic(raw_converter_polars)
+        return formatted_converter_df
         
+    def _get_details_on_order(self) -> pd.DataFrame:
+        ''' Extracts "Details on order" table from page 2
+        Returns:
+            pd.DataFrame: Details on order table 
+        '''
+            
+        is_master = self._check_if_master()
+        details_on_order_params = {
+            'flavor':'stream',
+            'columns': ['198'],
+            'table_areas': [f'20,585,600,{380 if is_master else 430}'],
+            'row_tol': 10,
+            'split_text': True
+        }
         
-        # master_data_table = self._extract_single_page_table(2, **master_data_params)
-        # master_data_df = self._convert_to_dataframe(master_data_table)
-        # merged_master_data_df = self._stack_columns_in_pairs(master_data_df)
-        # merged_master_data_df = merged_master_data_df.replace('', pd.NA).dropna(how='all')
-        # return merged_master_data_df
+        raw_details_on_order_data = camelot.read_pdf(
+            filepath=str(self.pdf_path),
+            pages='2',
+            **details_on_order_params
+        )
+        details_on_order_df = raw_details_on_order_data[0].df
+            # extracts raw details from pdf 
+            
+        formatted_details_on_order_df = CSVFormatter.merge_continuation_rows(details_on_order_df)
+            # fusing cells when lines are continuing on a new row
+            
+        return formatted_details_on_order_df
