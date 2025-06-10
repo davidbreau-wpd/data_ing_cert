@@ -189,3 +189,6 @@ terraform.tfstate
 
 # TEMP FILES
 power_bi_data/
+
+# Database
+data/excel/
