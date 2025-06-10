@@ -216,7 +216,7 @@ class Enercon_Report(_Service_Report):
         """
         Extracts the raw inspection table from the Enercon report.
         
-        Returns:
+        returns:
             tuple: (pandas DataFrame, camelot Table) containing the extracted data
                   and the original camelot table for coordinate access
         """
