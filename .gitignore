@@ -192,3 +192,6 @@ power_bi_data/
 
 # Database
 data/excel/
+
+# CSV from excel
+data/csv/
